@@ -1,8 +1,8 @@
 /*
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:47:09 
- * @Last Modified by: sanghangning
- * @Last Modified time: 2021-08-13 15:27:35
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2022-01-13 21:57:18
  */
 <template >
   <div class="index-wrap">
@@ -16,7 +16,9 @@ export default {
     return {}
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    console.log(this.moment().format('dddd'))
+  },
   methods: {},
 }
 </script>

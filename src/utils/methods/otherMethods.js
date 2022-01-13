@@ -1,37 +1,11 @@
 /*
  * @Author: sanghangning 
  * @Date: 2019-12-11 11:23:58 
- * @Last Modified by: sanghangning
- * @Last Modified time: 2020-05-26 14:25:18
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2022-01-13 21:57:49
  */
 
 export default {
-    /**
-     * 节流
-     */
-    mixin_throttle(fn, interval = 300) {
-        let canRun = true;
-        return function () {
-            if (!canRun) return;
-            canRun = false;
-            setTimeout(() => {
-                fn.apply(this, arguments);
-                canRun = true;
-            }, interval);
-        };
-    },
-    /**
-     * 防抖
-     */
-    mixin_debounce(fn, interval = 300) {
-        let timeout = null;
-        return function () {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                fn.apply(this, arguments);
-            }, interval);
-        };
-    },
     /**
      * 粘贴至剪剪贴板
      * 
@@ -115,29 +89,5 @@ export default {
         return arr.filter(function (val) {
             return !(!val || val === "");
         });
-    },
-    /**
-     * 向左平滑滚动
-     * @param {String} id 
-     * @param {Number} length
-     * 滑动元素需要加上scroll-behavior: smooth; 
-     */
-    scrollPrev(id, length = 200) {
-        document.getElementById(id).scrollTo({
-            left: document.getElementById(id).scrollLeft -= length,
-            behavior: 'smooth' // 平滑滚动
-        })
-    },
-    /**
-     * 向右平滑滚动
-     * @param {String} id 
-     * @param {Number} length 
-     * 滑动元素需要加上scroll-behavior: smooth; 
-     */
-    scrollNext(id, length = 200) {
-        document.getElementById(id).scrollTo({
-            left: document.getElementById(id).scrollLeft += length,
-            behavior: 'smooth' // 平滑滚动
-        })
     }
 }
