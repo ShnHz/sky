@@ -35,8 +35,6 @@ function removePendingRequest(config) {
   }
 }
 
-
-
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
@@ -66,6 +64,6 @@ axios.interceptors.response.use(
   }
 );
 
-export function loadAxios(app) {
+export default function(app) {
   app.config.globalProperties.$http = axios;
 }

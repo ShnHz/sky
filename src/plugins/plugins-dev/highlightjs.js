@@ -1,14 +1,15 @@
 /*
  * @Author: sanghangning 
  * @Date: 2021-06-03 09:59:02 
- * @Last Modified by: sanghangning
- * @Last Modified time: 2021-08-13 18:15:52
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2022-01-13 22:56:59
  */
 
 import hljs from 'highlightjs'
 import 'highlightjs/styles/atom-one-dark.css'
 
-export function loadHighlightjs(app) {
+// code 代码高亮
+export default function(app) {
     app.directive('highlightjs', {
         deep: true,
         mounted(el, binding) {
@@ -45,5 +46,3 @@ export function loadHighlightjs(app) {
         },
     });
 }
-
-// code 代码高亮

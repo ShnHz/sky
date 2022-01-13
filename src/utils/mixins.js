@@ -2,12 +2,12 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:46:35 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-01-13 22:04:52
+ * @Last Modified time: 2022-01-13 22:45:43
  */
 
 // directives
 import directives from './directives/directives.js'
-import { ClickOutside } from 'element-plus/lib/directives'
+// import { ClickOutside } from 'element-plus/lib/directives'
 
 // filters
 import numberFilters from './filters/numberFilters.js'
@@ -23,7 +23,7 @@ import formatMethods from './methods/formatMethods.js'
 const mixins = {
     directives: {
         ...directives,
-        clickoutside: ClickOutside,
+        // clickoutside: ClickOutside,
     },
     filters: {
         ...arrayFilters,
@@ -34,7 +34,6 @@ const mixins = {
         moment,
         ...typeMethods,
         ...stringMethods,
-        ...numberMethods,
         ...formatMethods,
         ...otherMethods,
     }
