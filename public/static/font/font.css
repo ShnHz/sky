@@ -1,0 +1,39 @@
+/* @font-face {
+    font-family: NexaBold;
+    src: url('./Nexa\ Bold.otf');
+} */
+
+@font-face {
+    font-family: NotoSansHans-Black;
+    src: url('./NotoSansHans-Black.otf');
+}
+
+@font-face {
+    font-family: NotoSansHans-Bold;
+    src: url('./NotoSansHans-Bold.otf');
+}
+
+/* @font-face {
+    font-family: NotoSansHans-DemiLight;
+    src: url('./NotoSansHans-DemiLight.otf');
+} */
+
+/* @font-face {
+    font-family: NotoSansHans-Light;
+    src: url('./NotoSansHans-Light.otf');
+} */
+
+/* @font-face {
+    font-family: NotoSansHans-Medium;
+    src: url('./NotoSansHans-Medium.otf');
+} */
+
+@font-face {
+    font-family: NotoSansHans-Regular;
+    src: url('./NotoSansHans-Regular.otf');
+}
+
+/* @font-face {
+    font-family: NotoSansHans-Thin-Windows;
+    src: url('./NotoSansHans-Thin-Windows.otf');
+} */

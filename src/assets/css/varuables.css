@@ -1,0 +1,26 @@
+/*
+ * @Author: sanghangning 
+ * @Date: 2019-12-11 10:48:23 
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2021-08-12 16:40:10
+ */
+
+body {
+    --themeColor: #43d4c5;
+
+    --themeColor-danger: #f56c6c;
+    --themeColor-success: #67C23A;
+    --themeColor-warning: #E6A23C;
+    --color-text-primary: #262626;
+    --color-text-regular: #595959;
+    --color-text-secondary: #8c8c8c;
+    --color-text-placeholder: #8c8c8c;
+
+    --viewBg: #f5f9fa;
+
+    --sys-titleColor: #2b374f;
+    --sys-asideBgColor: #485566;
+    --sys-headerBgColor: #f2f3f5;
+
+    --box-shadow: 0 1px 32px 0 rgb(213 243 243 / 53%);
+}
