@@ -11,7 +11,7 @@
     >.arco-layout-sider {
         overflow: hidden;
         position: relative;
-        background: $--sideBarBg;
+        background: $--sideBar-bg;
 
         .arco-layout-sider-children {
             overflow: hidden;
@@ -21,12 +21,19 @@
             box-shadow: none;
         }
 
+        &.arco-layout-sider-collapsed {
+            .arco-menu-pop-header {
+                width: 40px;
+            }
+        }
+
         // 侧边栏菜单
         .arco-menu.arco-menu-light {
             background: transparent;
 
             .arco-menu-inner {
                 padding: 0px 24px 0 12px;
+                transition: padding $--sideBar-transition-duration ease;
             }
 
             .arco-menu-item,
@@ -91,6 +98,7 @@
     >.arco-layout {
         overflow: visible;
         z-index: 1;
+        min-width: 600px;
         position: relative;
         padding: 0 24px;
         box-shadow: -10px 0 50px 20px rgba(233, 233, 233, 0.5);

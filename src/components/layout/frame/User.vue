@@ -23,27 +23,31 @@ export default {
   align-items: center;
   width: 280px;
   padding: 24px 24px 60px;
+  transition: padding 0.1s ease;
   &.is-collapsed {
     padding: 24px 6px 60px;
-    ::v-deep {
-      .arco-image,
+    ::v-deep(.arco-image) {
       .arco-image-img {
         width: 36px !important;
         height: 36px !important;
       }
     }
-  }
-  ::v-deep {
-    .arco-image {
-      position: relative;
-      margin-right: 20px;
+    .user-info-wrap {
+      opacity: 0;
     }
+  }
+  ::v-deep(.arco-image) {
+    position: relative;
+    margin-right: 20px;
     .arco-image-img {
       border-radius: 50%;
-      box-shadow: -10px 20px 100px 2px mix($--sideBarBg, $--themeColor, 30%);
+      box-shadow: -10px 20px 100px 2px mix($--sideBar-bg, $--themeColor, 30%);
+      transition: all $--sideBar-transition-duration ease;
     }
   }
   .user-info-wrap {
+    opacity: 1;
+    transition: opacity $--sideBar-transition-duration ease;
     p {
       margin-top: 6px;
       font-size: 14px;

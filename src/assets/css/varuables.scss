@@ -5,7 +5,6 @@
  * @Last Modified time: 2022-01-14 16:41:21
  */
 $--viewBg: #fff;
-$--sideBarBg: #fafafa;
 
 $--themeColor: #1d63ff;
 
@@ -32,4 +31,7 @@ $--sys-borderColor: #e5e5e5;
 $--header-height: 60px;
 $--box-shadow: 0 1px 32px 0 rgb(213 243 243 / 53%);
 $--border-radius: 22.5%;
-// $--border-radius-2: 8.12%/21.75%;
+
+/* sidebar */
+$--sideBar-bg: #fafafa;
+$--sideBar-transition-duration: 0.2s;
