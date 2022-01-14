@@ -1,6 +1,8 @@
 <template>
   <div class="layout-user-wrap" :class="{'is-collapsed':$store.state.common.collapsed}" :title="$store.state.common.userInfo.username">
-    <a-image width="50" height="50" :src="avatar" show-loader />
+    <a-avatar :size="$store.state.common.collapsed ? 36 : 50">
+      <img alt="avatar" :src="avatar" />
+    </a-avatar>
     <div class="user-info-wrap">
       <h3>Hi,{{$store.state.common.userInfo.username}}</h3>
       <p>nice to meet you!</p>
@@ -11,8 +13,7 @@
 export default {
   data() {
     return {
-      avatar: new URL(`../../../assets/img/common/avatar.jpg`, import.meta.url)
-        .href,
+      avatar:this.$store.getters['common/getUserAvatar']
     }
   },
 }
@@ -20,33 +21,31 @@ export default {
 <style lang="scss" scoped>
 .layout-user-wrap {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 280px;
+  height: 134px;
   padding: 24px 24px 60px;
   transition: padding 0.1s ease;
   &.is-collapsed {
     padding: 24px 6px 60px;
-    ::v-deep(.arco-image) {
-      .arco-image-img {
-        width: 36px !important;
-        height: 36px !important;
-      }
+    ::v-deep(.arco-avatar) {
+      width: 36px !important;
+      height: 36px !important;
     }
     .user-info-wrap {
       opacity: 0;
     }
   }
-  ::v-deep(.arco-image) {
+  ::v-deep(.arco-avatar) {
     position: relative;
     margin-right: 20px;
-    .arco-image-img {
-      border-radius: 50%;
-      box-shadow: -10px 20px 100px 2px mix($--sideBar-bg, $--themeColor, 30%);
-      transition: all $--sideBar-transition-duration ease;
-    }
+    box-shadow: -10px 20px 100px 2px mix($--sideBar-bg, $--themeColor, 30%);
+    transition: all $--sideBar-transition-duration ease;
   }
   .user-info-wrap {
     opacity: 1;
+    position: relative;
+    margin-top: 6px;
     transition: opacity $--sideBar-transition-duration ease;
     p {
       margin-top: 6px;

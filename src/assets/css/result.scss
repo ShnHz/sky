@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:48:17 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-14 16:47:29
+ * @Last Modified time: 2022-01-14 22:36:31
  */
 body,
 div,
@@ -437,9 +437,15 @@ img[lazy="error"] {
 
 /* shn */
 
-#nprogress .bar {
-    z-index: 9999;
-    background: $--themeColor;
+#nprogress {
+    .bar {
+        z-index: 9999;
+        background: $--themeColor;
+    }
+
+    .spinner {
+        display: none !important;
+    }
 }
 
 .image-error-slot {

@@ -40,11 +40,10 @@ export default {
   },
   watch: {
     collapsed: {
-      immediate: true,
       deep: true,
       handler(value) {
-        console.log(value)
         this.$store.commit('common/setCollapsed', value)
+        localStorage.setItem('collapsed', value)
       },
     },
   },
@@ -55,12 +54,18 @@ export default {
     }
   },
   mounted() {
-    this.$bus.$on('reload-router-view', () => {
+    this.collapsed = localStorage.getItem('collapsed') == 'true'
+
+    this.$bus.$on('reload-router-view', this.reloadRouterView)
+  },
+  methods: {
+    // 刷新路由页面
+    reloadRouterView() {
       this.routerView = false
       this.$nextTick(() => {
         this.routerView = true
       })
-    })
+    },
   },
 }
 </script>

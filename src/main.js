@@ -15,6 +15,7 @@ import '@css/result.scss'
 import '@css/skeleton.css'
 import '@/assets/iconfont/shn-ui/iconfont.css'
 import '@css/cover-arco-design/index.scss'
+import 'nprogress/nprogress.css'
 
 // api
 import api from './api';

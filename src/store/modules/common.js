@@ -2,6 +2,7 @@
 // set：this.$store.commit('common/setTest', value)
 
 const state = {
+    token: '',
     userInfo: {
         username: 'Admin'
     },
@@ -9,6 +10,9 @@ const state = {
     collapsed: false
 }
 const mutations = {
+    setToken(state, data) {
+        state.token = data
+    },
     setUserInfo(state, data) {
         state.userInfo = data
     },
@@ -19,7 +23,13 @@ const mutations = {
         state.collapsed = data
     },
 }
-const getters = {}
+const getters = {
+    getUserAvatar: state => {
+        return state.userInfo.avatar || new URL('../../assets/img/common/avatar.jpg',
+                import.meta.url)
+            .href
+    }
+}
 const actions = {}
 
 export default {

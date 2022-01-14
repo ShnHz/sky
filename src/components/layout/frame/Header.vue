@@ -1,11 +1,16 @@
 <template>
   <a-layout-header>
-    <h2>{{title}}</h2>
+    <a-breadcrumb>
+      <a-breadcrumb-item>管理系统模板</a-breadcrumb-item>
+      <a-breadcrumb-item>
+        <b>{{title}}</b>
+      </a-breadcrumb-item>
+    </a-breadcrumb>
 
     <div class="right-wrap">
       <span class="time-wrap">{{moment().format('dddd , D MMMM , YYYY')}}</span>
       <span class="notice-wrap">
-        <a-badge :count="9" dot :offset="[2, -2]">
+        <a-badge :count="1" dot :offset="[1, 0]">
           <IconNotification />
         </a-badge>
       </span>
@@ -63,13 +68,11 @@ export default {
     align-items: center;
     height: 60px;
     border-bottom: 1px solid $--sys-borderColor;
-    h2 {
-      position: relative;
-      font-size: 20px;
-      font-weight: 400;
-      color: rgba(0, 0, 0, 0.85);
-      transition: all 0.3s ease;
+    .arco-breadcrumb {
+      font-size: 16px;
+      transition: all 0.2s ease;
     }
+
     .right-wrap {
       margin-left: auto;
       svg {
