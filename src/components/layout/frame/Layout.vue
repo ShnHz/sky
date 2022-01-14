@@ -12,12 +12,14 @@
     <a-layout>
       <a-layout-header>Header</a-layout-header>
       <a-layout>
-        <a-breadcrumb>
-          <a-breadcrumb-item>Home</a-breadcrumb-item>
-          <a-breadcrumb-item>List</a-breadcrumb-item>
-          <a-breadcrumb-item>App</a-breadcrumb-item>
-        </a-breadcrumb>
-        <LayoutContent />
+        <a-layout>
+          <a-breadcrumb>
+            <a-breadcrumb-item>Home</a-breadcrumb-item>
+            <a-breadcrumb-item>List</a-breadcrumb-item>
+            <a-breadcrumb-item>App</a-breadcrumb-item>
+          </a-breadcrumb>
+          <LayoutContent />
+        </a-layout>
       </a-layout>
     </a-layout>
   </a-layout>
@@ -32,7 +34,7 @@ export default {
     LayoutContent,
     LayoutMenu,
     IconMenuUnfold,
-    IconMenuFold
+    IconMenuFold,
   },
   data() {
     return {}

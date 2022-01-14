@@ -2,17 +2,18 @@
  * @Author: sanghangning 
  * @Date: 2022-01-14 11:26:19 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-14 12:13:00
+ * @Last Modified time: 2022-01-14 13:42:16
  */
 #vue-admin-wrap>.arco-layout {
     height: 100vh;
 
     >.arco-layout-sider {
+        position: relative;
         background: $--sideBarBg;
 
         // 侧边栏菜单
         .arco-menu.arco-menu-light {
-            background: $--sideBarBg;
+            background: transparent;
 
             .arco-menu-inner {
                 padding: 0px 24px;
@@ -20,7 +21,7 @@
 
             .arco-menu-item,
             .arco-menu-inline-header {
-                background: $--sideBarBg;
+                background: transparent;
 
                 svg {
                     position: relative;
@@ -32,23 +33,37 @@
                     background: #fff;
                 }
             }
-            .arco-menu-inline-content{
+
+            .arco-menu-inline-content {
                 padding-left: 14px;
+            }
+
+            &.arco-menu-collapsed {
+                .arco-menu-inner {
+                    padding: 0px 4px;
+                }
             }
         }
 
         // 侧边栏收缩按钮
         .arco-layout-sider-trigger.arco-layout-sider-trigger-light {
-            background: $--sideBarBg;
+            background: transparent;
         }
     }
 
+    // 框架内容主体
     >.arco-layout {
-        overflow: hidden;
+        overflow: visible;
+        z-index: 1;
+        box-shadow: -10px 0 50px 5px rgba(233, 233, 233, 0.5);
 
-        .arco-layout-content {
-            position: relative;
-            background: $--viewBg;
+        >.arco-layout {
+            overflow: hidden;
+
+            .arco-layout-content {
+                position: relative;
+                background: $--viewBg;
+            }
         }
     }
 }
