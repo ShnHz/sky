@@ -20,6 +20,10 @@ import '@css/cover-arco-design/index.scss'
 import api from './api';
 app.config.globalProperties.$api = api;
 
+// bus
+import Bus from './utils/bus';
+app.config.globalProperties.$bus = new Bus()
+
 // config
 app.config.globalProperties.$window = window
 app.config.globalProperties.$document = document

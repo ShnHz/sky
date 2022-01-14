@@ -15,7 +15,7 @@
       <LayoutHeader />
       <a-layout>
         <a-layout>
-          <LayoutContent />
+          <LayoutContent v-if="routerView" />
         </a-layout>
       </a-layout>
     </a-layout>
@@ -51,7 +51,16 @@ export default {
   data() {
     return {
       collapsed: false,
+      routerView: true,
     }
+  },
+  mounted() {
+    this.$bus.$on('reload-router-view', () => {
+      this.routerView = false
+      this.$nextTick(() => {
+        this.routerView = true
+      })
+    })
   },
 }
 </script>
