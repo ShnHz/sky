@@ -2,8 +2,11 @@
 // set：this.$store.commit('common/setTest', value)
 
 const state = {
-    userInfo: {},
-    navData: []
+    userInfo: {
+        username: 'Admin'
+    },
+    navData: [],
+    collapsed: false
 }
 const mutations = {
     setUserInfo(state, data) {
@@ -12,15 +15,11 @@ const mutations = {
     setNavData(state, data) {
         state.navData = data
     },
-}
-const getters = {
-    getUserInfo(state) {
-        return state.userInfo
+    setCollapsed(state, data) {
+        state.collapsed = data
     },
-    getNavData(state) {
-        return state.navData
-    }
 }
+const getters = {}
 const actions = {}
 
 export default {

@@ -2,26 +2,17 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:48:23 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-14 11:39:20
+ * @Last Modified time: 2022-01-14 16:41:10
  */
 
 :root {
     --viewBg: #fff;
     --sideBarBg: #fafafa;
 
-    --themeColor: #FB9A1B;
-    --themeColor-new: #FB9A1B;
+    --themeColor: #1d63ff;
 
-    --themeColor-2: #000;
-    --themeColor-3: #565555;
-    --themeColor-4: #FECB31;
-    --themeColor-5: #FFF9D4;
-    --themeColor-6: #FCF7E5;
-    --themeColor-6-new: #FCF7E5;
-    --themeColor-7: #575A65;
-    --themeColor-8: #E9D387;
-    --themeColor-9: #ffdb57;
-    --themeColor-10: #fcf7e4;
+    --color-black: #000;
+    --color-white: #fff;
 
     --textColor-1: #000;
     --textColor-2: rgba(34, 34, 34, 0.85);

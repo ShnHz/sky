@@ -1,23 +1,20 @@
 <template>
   <a-layout>
-    <a-layout-sider collapsible :width="280">
-      <div class="logo" />
+    <a-layout-sider collapsible :collapsed="collapsed" :width="280">
+      <LayoutUser />
       <LayoutMenu />
       <!-- trigger -->
-      <template #trigger="{ collapsed }">
-        <IconMenuUnfold v-if="collapsed"></IconMenuUnfold>
-        <IconMenuFold v-else></IconMenuFold>
+      <template #trigger>
+        <div class="collapsed-btn-wrap" @click="collapsed=!collapsed">
+          <IconMenuUnfold v-if="collapsed"></IconMenuUnfold>
+          <IconMenuFold v-else></IconMenuFold>
+        </div>
       </template>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header>Header</a-layout-header>
+      <LayoutHeader />
       <a-layout>
         <a-layout>
-          <a-breadcrumb>
-            <a-breadcrumb-item>Home</a-breadcrumb-item>
-            <a-breadcrumb-item>List</a-breadcrumb-item>
-            <a-breadcrumb-item>App</a-breadcrumb-item>
-          </a-breadcrumb>
           <LayoutContent />
         </a-layout>
       </a-layout>
@@ -25,19 +22,36 @@
   </a-layout>
 </template>
 <script>
+import LayoutHeader from './Header.vue'
 import LayoutContent from './Content.vue'
 import LayoutMenu from './Menu.vue'
+import LayoutUser from './User.vue'
+
 import { IconMenuFold, IconMenuUnfold } from '@arco-design/web-vue/es/icon'
 
 export default {
   components: {
+    LayoutHeader,
     LayoutContent,
     LayoutMenu,
+    LayoutUser,
     IconMenuUnfold,
     IconMenuFold,
   },
+  watch: {
+    collapsed: {
+      immediate: true,
+      deep: true,
+      handler(value) {
+        console.log(value)
+        this.$store.commit('common/setCollapsed', value)
+      },
+    },
+  },
   data() {
-    return {}
+    return {
+      collapsed: false,
+    }
   },
 }
 </script>
