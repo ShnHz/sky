@@ -2,13 +2,34 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:48:23 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2021-08-12 16:40:10
+ * @Last Modified time: 2022-01-14 11:39:20
  */
 
-body {
-    --themeColor: #43d4c5;
+:root {
+    --viewBg: #fff;
+    --sideBarBg: #fafafa;
 
-    --themeColor-danger: #f56c6c;
+    --themeColor: #FB9A1B;
+    --themeColor-new: #FB9A1B;
+
+    --themeColor-2: #000;
+    --themeColor-3: #565555;
+    --themeColor-4: #FECB31;
+    --themeColor-5: #FFF9D4;
+    --themeColor-6: #FCF7E5;
+    --themeColor-6-new: #FCF7E5;
+    --themeColor-7: #575A65;
+    --themeColor-8: #E9D387;
+    --themeColor-9: #ffdb57;
+    --themeColor-10: #fcf7e4;
+
+    --textColor-1: #000;
+    --textColor-2: rgba(34, 34, 34, 0.85);
+    --textColor-3: #919191;
+    --textColor-4: #555;
+    --textColor-5: rgba(34, 34, 34, 0.85);
+
+    --themeColor-danger: #F96F00;
     --themeColor-success: #67C23A;
     --themeColor-warning: #E6A23C;
     --color-text-primary: #262626;
@@ -16,11 +37,14 @@ body {
     --color-text-secondary: #8c8c8c;
     --color-text-placeholder: #8c8c8c;
 
-    --viewBg: #f5f9fa;
 
+    --sys-borderColor: #e5e5e5;
     --sys-titleColor: #2b374f;
     --sys-asideBgColor: #485566;
     --sys-headerBgColor: #f2f3f5;
 
+    --header-height: 60px;
     --box-shadow: 0 1px 32px 0 rgb(213 243 243 / 53%);
+    --border-radius: 22.5%;
+    --border-radius-2: 8.12%/21.75%;
 }

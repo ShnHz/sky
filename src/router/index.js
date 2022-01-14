@@ -5,10 +5,7 @@ import {
 import common from './routers/common'
 import demo from './routers/demo'
 
-const routes = [{
-    path: '/',
-    redirect: '/index'
-  },
+const routes = [
   ...common,
   ...demo
 ]

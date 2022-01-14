@@ -1,0 +1,54 @@
+/*
+ * @Author: sanghangning 
+ * @Date: 2022-01-14 11:26:19 
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2022-01-14 12:13:00
+ */
+#vue-admin-wrap>.arco-layout {
+    height: 100vh;
+
+    >.arco-layout-sider {
+        background: $--sideBarBg;
+
+        // 侧边栏菜单
+        .arco-menu.arco-menu-light {
+            background: $--sideBarBg;
+
+            .arco-menu-inner {
+                padding: 0px 24px;
+            }
+
+            .arco-menu-item,
+            .arco-menu-inline-header {
+                background: $--sideBarBg;
+
+                svg {
+                    position: relative;
+                    top: 1px;
+                    font-size: 18px;
+                }
+
+                &.arco-menu-item.arco-menu-selected {
+                    background: #fff;
+                }
+            }
+            .arco-menu-inline-content{
+                padding-left: 14px;
+            }
+        }
+
+        // 侧边栏收缩按钮
+        .arco-layout-sider-trigger.arco-layout-sider-trigger-light {
+            background: $--sideBarBg;
+        }
+    }
+
+    >.arco-layout {
+        overflow: hidden;
+
+        .arco-layout-content {
+            position: relative;
+            background: $--viewBg;
+        }
+    }
+}

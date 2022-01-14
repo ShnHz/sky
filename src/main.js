@@ -14,6 +14,7 @@ import '@css/varuables.css'
 import '@css/result.scss'
 import '@css/skeleton.css'
 import '@/assets/iconfont/shn-ui/iconfont.css'
+import '@css/cover-arco-design/index.scss'
 
 // api
 import api from './api';

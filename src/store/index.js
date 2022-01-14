@@ -10,7 +10,7 @@ const store = createStore({
   mutations: {},
   actions: {},
   modules: {
-    common
+    common,
   },
 })
 
