@@ -11,7 +11,7 @@
         </div>
       </template>
     </a-layout-sider>
-    <a-layout>
+    <a-layout :class="{'is-collapsed':$store.state.common.collapsed}">
       <LayoutHeader />
       <a-layout>
         <a-layout>

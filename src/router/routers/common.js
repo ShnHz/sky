@@ -7,7 +7,7 @@ export default [{
         children: [{
             path: '/index',
             name: 'Index',
-            component: () => import('@/views/index.vue'),
+            component: () => import('@/views/common/index.vue'),
             meta: {
                 title: '主页'
             }
@@ -15,11 +15,16 @@ export default [{
     }, {
         name: '404',
         path: '/404',
-        component: () => import('@/views/404.vue'),
+        component: () => import('@/views/common/404.vue'),
     },
     {
         path: '/:pathMatch(.*)*',
         redirect: '/404'
+    },
+    {
+        name: 'Login',
+        path: '/login',
+        component: () => import('@/views/common/login.vue'),
     },
 
 ]
