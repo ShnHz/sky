@@ -1,6 +1,6 @@
 <template>
-  <div class="page-404-wrap">
-    <a-result status="404" subtitle="404，当前页面没有找到">
+  <div class="page-500-wrap">
+    <a-result status="500" subtitle="500，服务器未知错误">
       <template #extra>
         <a-space>
           <a-button @click="mixins_contactAdministrator">联系管理员</a-button>
@@ -16,14 +16,14 @@ export default {
     return {}
   },
   methods: {
-    back() {
+   back() {
       this.$router.go(-1)
     },
   },
 }
 </script>
 <style lang="scss" scoped>
-.page-404-wrap {
+.page-500-wrap {
   display: flex;
   align-items: center;
   height: 100vh;

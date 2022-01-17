@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:47:09 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-17 16:46:02
+ * @Last Modified time: 2022-01-17 17:05:03
  */
 <template >
   <div class="login-wrap">
@@ -49,7 +49,7 @@
               <a-divider />
               <p class="tip">
                 您是否忘记了账号/密码？
-                <a @click="()=>this.$notification.info('管理员手机号码：123456789')">请联系管理员</a>
+                <a @click="mixins_contactAdministrator">请联系管理员</a>
               </p>
             </a-form>
           </a-space>
@@ -60,7 +60,7 @@
             <a-divider />
             <p class="tip">
               如有问题，
-              <a @click="()=>this.$notification.info('管理员手机号码：123456789')">请联系管理员</a>
+              <a @click="mixins_contactAdministrator">请联系管理员</a>
             </p>
           </a-space>
         </div>

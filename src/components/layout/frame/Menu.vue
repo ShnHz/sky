@@ -3,8 +3,14 @@
     <a-menu-item key="Index">
       <IconHome></IconHome>主页
     </a-menu-item>
+    <a-menu-item key="403">
+      <IconCommon></IconCommon>403
+    </a-menu-item>
     <a-menu-item key="404">
       <IconCommon></IconCommon>404
+    </a-menu-item>
+    <a-menu-item key="500">
+      <IconCommon></IconCommon>500
     </a-menu-item>
     <a-menu-item key="0_3">
       <IconBook></IconBook>Menu 3
@@ -44,7 +50,7 @@ import {
   IconBook,
   IconTiktokColor,
   IconLarkColor,
-  IconCommon
+  IconCommon,
 } from '@arco-design/web-vue/es/icon'
 
 export default {
@@ -56,15 +62,15 @@ export default {
     IconBook,
     IconTiktokColor,
     IconLarkColor,
-    IconCommon
+    IconCommon,
   },
   data() {
     return {}
   },
   computed: {
     active() {
-      return this.$route.name 
-    }
+      return this.$route.name
+    },
   },
   methods: {
     onClickMenuItem(item) {

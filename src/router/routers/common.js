@@ -22,6 +22,16 @@ export default [{
         redirect: '/404'
     },
     {
+        name: '403',
+        path: '/403',
+        component: () => import('@/views/common/403.vue'),
+    },
+    {
+        name: '500',
+        path: '/500',
+        component: () => import('@/views/common/500.vue'),
+    },
+    {
         name: 'Login',
         path: '/login',
         component: () => import('@/views/common/login.vue'),

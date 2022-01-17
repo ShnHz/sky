@@ -1,8 +1,8 @@
 /*
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:46:35 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-01-13 22:45:43
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2022-01-17 17:04:37
  */
 
 // directives
@@ -19,6 +19,7 @@ import otherMethods from './methods/otherMethods.js'
 import typeMethods from './methods/typeMethods.js'
 import stringMethods from './methods/stringMethods.js'
 import formatMethods from './methods/formatMethods.js'
+import admin from './methods/admin.js'
 
 const mixins = {
     directives: {
@@ -36,6 +37,7 @@ const mixins = {
         ...stringMethods,
         ...formatMethods,
         ...otherMethods,
+        ...admin
     }
 }
 export default mixins

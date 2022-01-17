@@ -1,6 +1,6 @@
 <template>
-  <div class="page-404-wrap">
-    <a-result status="404" subtitle="404，当前页面没有找到">
+  <div class="page-403-wrap">
+    <a-result status="403" subtitle="您没有权限访问该页面">
       <template #extra>
         <a-space>
           <a-button @click="mixins_contactAdministrator">联系管理员</a-button>
@@ -23,7 +23,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.page-404-wrap {
+.page-403-wrap {
   display: flex;
   align-items: center;
   height: 100vh;
