@@ -1,13 +1,5 @@
-/*
- * @Author: sanghangning 
- * @Date: 2022-01-17 18:52:44 
- * @Last Modified by:   sanghangning 
- * @Last Modified time: 2022-01-17 18:52:44 
- */
 <template >
-  <div class="index-wrap">
-    <Empty />
-  </div>
+  <div class="index-wrap">表格</div>
 </template>
 <script>
 export default {

@@ -1,10 +1,16 @@
 <template>
   <div class="tabs-wrap">
-    <a-tabs type="card" @tab-click="handleClick" @delete="handleDelete" editable>
-      <a-tab-pane :closable="item.meta.closable != false" :key="item" v-for="(item) in visitedRoutes">
-        <template #title>{{item.meta.title}}</template>
-      </a-tab-pane>
-    </a-tabs>
+    <a-dropdown trigger="contextMenu" alignPoint :style="{display:'block'}">
+      <a-tabs type="card" @tabClick="handleClick" @delete="handleDelete" editable :active-key="tabActive">
+        <a-tab-pane :closable="!(item.meta.affix == true)" :key="item.fullPath" v-for="(item) in visitedRoutes">
+          <template #title>{{item.meta.title}}</template>
+        </a-tab-pane>
+      </a-tabs>
+
+      <template #content>
+        <a-doption @click="delAllVisitedRoutes">关闭全部</a-doption>
+      </template>
+    </a-dropdown>
   </div>
 </template>
 <script>
@@ -17,12 +23,13 @@ export default {
     IconRight,
   },
   data() {
-    return {}
+    return {
+      tabActive: null,
+    }
   },
   watch: {
     $route: {
       deep: true,
-      immediate: true,
       handler(route) {
         this.addTabs(route)
       },
@@ -33,9 +40,22 @@ export default {
       visitedRoutes: 'tabsBar/visitedRoutes',
     }),
   },
+  created() {
+    this.initAffixTabs(this.$router.options.routes)
+    this.addTabs(this.$route)
+  },
   methods: {
     handleDelete(key) {},
-    handleClick(key) {},
+    handleClick(key) {
+      console.log(key)
+    },
+
+    initAffixTabs(routes) {
+      routes.forEach((route) => {
+        if (route.meta && route.meta.affix) this.addTabs(route)
+        if (route.children) this.initAffixTabs(route.children)
+      })
+    },
 
     ...mapActions({
       addVisitedRoute: 'tabsBar/addVisitedRoute',

@@ -31,11 +31,11 @@
         <a-menu-item key="3_3">Menu 3</a-menu-item>
       </a-sub-menu>
     </a-sub-menu>
-    <a-sub-menu key="4">
+    <a-sub-menu key="components">
       <template #title>
-        <IconTiktokColor></IconTiktokColor>Navigation 4
+        <IconTiktokColor></IconTiktokColor>组件
       </template>
-      <a-menu-item key="4_1">Menu 1</a-menu-item>
+      <a-menu-item key="ComponentsTable">表格</a-menu-item>
       <a-menu-item key="4_2">Menu 2</a-menu-item>
       <a-menu-item key="4_3">Menu 3</a-menu-item>
     </a-sub-menu>

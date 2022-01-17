@@ -10,7 +10,7 @@ export default [{
             component: () => import('@/views/common/index.vue'),
             meta: {
                 title: '首页',
-                closable: false
+                affix: true
             }
         }],
     }, {
