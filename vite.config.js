@@ -29,6 +29,12 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `@import "@css/varuables.scss";`
+      },
+      less: {
+        modifyVars: {
+          'arcoblue-6': '#1d63ff',
+        },
+        javascriptEnabled: true,
       }
     }
   }

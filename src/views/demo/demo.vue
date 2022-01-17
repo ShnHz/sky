@@ -80,7 +80,7 @@ export default {
       }
       &:hover {
         background: transparent;
-        color: var(--themeColor);
+        color: var(--color-primary);
       }
       &.is-active {
         background: #eaf9f9;
@@ -92,7 +92,7 @@ export default {
           position: absolute;
           top: 0;
           right: 0;
-          background: var(--themeColor);
+          background: var(--color-primary);
         }
       }
     }

@@ -39,7 +39,7 @@ export default {
   ::v-deep(.arco-avatar) {
     position: relative;
     margin-right: 20px;
-    box-shadow: -10px 20px 100px 2px mix($--sideBar-bg, $--themeColor, 30%);
+    box-shadow: -10px 20px 100px 2px mix($--sideBar-bg, $--color-primary, 30%);
     transition: all $--sideBar-transition-duration ease;
   }
   .user-info-wrap {

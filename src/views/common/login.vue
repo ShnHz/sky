@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:47:09 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-17 11:57:35
+ * @Last Modified time: 2022-01-17 15:17:37
  */
 <template >
   <div class="login-wrap">
@@ -11,17 +11,33 @@
 
     <section>
       <div class="left-wrap">
+        <div class="qrcode-btn-wrap">
+          <PluginsSvgIcon name="login_qrcode" />
+        </div>
         <div class="login-form-wrap">
           <a-space direction="vertical" size="large" style="width:100%">
+            <h1>管理系统模板</h1>
             <a-form :model="form" layout="vertical">
               <a-form-item field="username" label="用户名">
-                <a-input v-model="form.name" placeholder="请输入用户名称/手机号码" size="large" />
+                <a-input v-model="form.username" placeholder="请输入用户名称/手机号码" allow-clear size="large">
+                  <template #prefix>
+                    <IconUser />
+                  </template>
+                </a-input>
               </a-form-item>
               <a-form-item field="password" label="密码">
-                <a-input v-model="form.password" placeholder="请输入密码" size="large" />
+                <a-input-password v-model="form.password" placeholder="请输入密码" allow-clear size="large">
+                  <template #prefix>
+                    <IconUnlock />
+                  </template>
+                </a-input-password>
+              </a-form-item>
+              <a-form-item field label="验证码">
+                <img src="@img/common/code.png" alt style="margin-right:10px" />
+                <a-input v-model="form.code" placeholder="请输入验证码" allow-clear size="large" />
               </a-form-item>
               <a-form-item>
-                <a-button type="primary" size="large" long>
+                <a-button type="primary" size="large" long @click="login">
                   登 录
                   <template #icon>
                     <IconArrowRight />
@@ -38,30 +54,45 @@
         </div>
       </div>
       <div class="right-wrap">
-        <PluginsSvgIcon name="icon_login" />
+        <PluginsSvgIcon name="login_person" />
       </div>
     </section>
   </div>
 </template>
 <script>
-import { IconArrowRight } from '@arco-design/web-vue/es/icon'
+import {
+  IconArrowRight,
+  IconUser,
+  IconUnlock,
+} from '@arco-design/web-vue/es/icon'
 
 export default {
   name: 'login',
   components: {
     IconArrowRight,
+    IconUser,
+    IconUnlock,
   },
   data() {
     return {
       form: {
-        name: '',
+        username: '',
         password: '',
+        code: '',
       },
     }
   },
   computed: {},
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.form.username = this.$cookies.get('login_username')
+  },
+  methods: {
+    // 登录事件
+    login() {
+      this.$cookies.set('login_username', this.form.username)
+      this.$router.push('/')
+    },
+  },
 }
 </script>
 <style scoped lang="scss">
@@ -100,12 +131,47 @@ export default {
       background: #fff;
       border-radius: 24px 0 0 24px;
       box-shadow: -50px 20px 50px 2px rgba(0, 0, 0, 0.05);
+      .qrcode-btn-wrap {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        width: 53px;
+        height: 53px;
+        &:hover {
+          svg {
+            color: #000;
+            transform: scale(1.1);
+          }
+        }
+        svg {
+          position: absolute;
+          font-size: 40px;
+          color: $--color-text-placeholder;
+          transition: 0.2s all ease;
+        }
+        &::after {
+          cursor: pointer;
+          content: '';
+          width: 0;
+          height: 0;
+          position: absolute;
+          bottom: -8px;
+          right: -8px;
+          border-bottom: 80px solid #fff;
+          border-left: 80px solid transparent;
+        }
+      }
       .login-form-wrap {
         width: 340px;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        h1 {
+          text-align: center;
+          font-size: 24px;
+          font-weight: 400;
+        }
         ::v-deep(.arco-btn) {
           .arco-btn-icon {
             position: absolute;
