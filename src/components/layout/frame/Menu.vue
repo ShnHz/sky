@@ -1,44 +1,28 @@
 <template>
-  <a-menu :default-open-keys="[]" :default-selected-keys="active" :style="{ width: '100%' }" @menu-item-click="onClickMenuItem">
-    <a-menu-item key="Index">
-      <IconHome></IconHome>首页
-    </a-menu-item>
-    <a-menu-item key="403">
-      <IconCommon></IconCommon>403
-    </a-menu-item>
-    <a-menu-item key="404">
-      <IconCommon></IconCommon>404
-    </a-menu-item>
-    <a-menu-item key="500">
-      <IconCommon></IconCommon>500
-    </a-menu-item>
-    <a-menu-item key="0_3">
-      <IconBook></IconBook>Menu 3
-    </a-menu-item>
-    <a-sub-menu key="1">
-      <template #title>
-        <IconLarkColor></IconLarkColor>Navigation 1
+  <a-menu :default-open-keys="opens" :default-selected-keys="active" :style="{ width: '100%' }" @menu-item-click="onClickMenuItem">
+    <template v-for="(item1,index1) in list" :key="`meun-lv1-${index1}`">
+      <a-menu-item :key="item1.name" v-if="!(item1.child && item1.child.length > 0)">
+        <component :is="item1.icon" />
+        {{item1.label}}
+      </a-menu-item>
+      <template v-else>
+        <a-sub-menu :key="item1.name">
+          <template #title>
+            <component :is="item1.icon" />
+            {{item1.label}}
+          </template>
+          <template v-for="(item2,index2) in item1.child" :key="`meun-lv2-${index2}`">
+            <a-menu-item :key="item2.name" v-if="!(item2.child && item2.child.length > 0)">{{item2.label}}</a-menu-item>
+            <template v-else>
+              <a-sub-menu :key="item2.name">
+                <template #title>{{item2.label}}</template>
+                <a-menu-item v-for="(item3) in item2.child" :key="item3.name">{{item3.label}}</a-menu-item>
+              </a-sub-menu>
+            </template>
+          </template>
+        </a-sub-menu>
       </template>
-      <a-menu-item key="1_1">Menu 1</a-menu-item>
-      <a-menu-item key="1_2">Menu 2</a-menu-item>
-      <a-sub-menu key="2" title="Navigation 2">
-        <a-menu-item key="2_1">Menu 1</a-menu-item>
-        <a-menu-item key="2_2">Menu 2</a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="3" title="Navigation 3">
-        <a-menu-item key="3_1">Menu 1</a-menu-item>
-        <a-menu-item key="3_2">Menu 2</a-menu-item>
-        <a-menu-item key="3_3">Menu 3</a-menu-item>
-      </a-sub-menu>
-    </a-sub-menu>
-    <a-sub-menu key="components">
-      <template #title>
-        <IconTiktokColor></IconTiktokColor>组件
-      </template>
-      <a-menu-item key="ComponentsTable">表格</a-menu-item>
-      <a-menu-item key="4_2">Menu 2</a-menu-item>
-      <a-menu-item key="4_3">Menu 3</a-menu-item>
-    </a-sub-menu>
+    </template>
   </a-menu>
 </template>
 <script>
@@ -68,9 +52,74 @@ export default {
     return {}
   },
   computed: {
-    active() {
-      return this.$route.name
+    list() {
+      return [
+        {
+          name: 'Index',
+          icon: 'IconHome',
+          label: '首页',
+        },
+        {
+          name: 'Status',
+          icon: 'IconCommon',
+          label: '状态页',
+          child: [
+            {
+              name: '403',
+              label: '403',
+            },
+            {
+              name: '404',
+              label: '404',
+            },
+            {
+              name: '500',
+              label: '500',
+            },
+          ],
+        },
+        {
+          name: '1',
+          icon: 'IconLarkColor',
+          label: 'Navigation 1',
+          child: [
+            {
+              name: 'menu1',
+              label: 'menu1',
+            },
+            {
+              name: 'menu2',
+              label: 'menu2',
+            },
+            {
+              name: 'menu3',
+              label: 'menu3',
+              child: [
+                {
+                  name: 'menu3-1',
+                  label: 'menu3-1',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: 'Components',
+          icon: 'IconTiktokColor',
+          label: '组件',
+          child: [
+            {
+              name: 'ComponentsTable',
+              label: '表格',
+            },
+          ],
+        },
+      ]
     },
+    active() {
+      return [this.$route.name]
+    },
+    opens() {},
   },
   methods: {
     onClickMenuItem(item) {

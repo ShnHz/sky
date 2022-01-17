@@ -45,16 +45,33 @@ export default {
     this.addTabs(this.$route)
   },
   methods: {
-    handleDelete(key) {},
-    handleClick(key) {
-      console.log(key)
+    async handleDelete(fullPath) {
+      const view = this.visitedRoutes.find((item) => {
+        return fullPath === item.fullPath
+      })
+      await this.delVisitedRoute(view)
+      if (view.path === this.$route.path) this.toLastTag()
+    },
+    handleClick(fullPath) {
+      this.$router.push({
+        path: fullPath,
+      })
     },
 
     initAffixTabs(routes) {
       routes.forEach((route) => {
-        if (route.meta && route.meta.affix) this.addTabs(route)
+        if (route.meta && route.meta.affix)
+          this.addTabs({
+            ...route,
+            fullPath: route.path,
+          })
         if (route.children) this.initAffixTabs(route.children)
       })
+    },
+    toLastTag() {
+      const latestView = this.visitedRoutes.slice(-1)[0]
+      if (latestView) this.$router.push(latestView)
+      else this.$router.push('/')
     },
 
     ...mapActions({
