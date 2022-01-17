@@ -1,17 +1,38 @@
 <template>
   <a-layout-content>
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component }" :key="key">
       <transition mode="out-in" name="fade-transform">
-        <component :is="Component" />
+        <keep-alive :include="cachedRoutes" :max="99">
+          <component :is="Component" />
+        </keep-alive>
       </transition>
     </router-view>
   </a-layout-content>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'LayoutContent',
   data() {
     return {}
+  },
+  computed: {
+    ...mapGetters({
+      visitedRoutes: 'tabsBar/visitedRoutes',
+    }),
+    cachedRoutes() {
+      const cachedRoutesArr = []
+      this.visitedRoutes.forEach((item) => {
+        if (!item.meta.noKeepAlive) {
+          cachedRoutesArr.push(item.name)
+        }
+      })
+      return cachedRoutesArr
+    },
+    key() {
+      return this.$route.path
+    },
   },
 }
 </script>

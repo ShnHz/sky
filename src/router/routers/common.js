@@ -9,7 +9,8 @@ export default [{
             name: 'Index',
             component: () => import('@/views/common/index.vue'),
             meta: {
-                title: '主页'
+                title: '首页',
+                closable: false
             }
         }],
     }, {

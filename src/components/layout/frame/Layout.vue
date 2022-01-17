@@ -13,6 +13,7 @@
     </a-layout-sider>
     <a-layout :class="{'is-collapsed':$store.state.common.collapsed}">
       <LayoutHeader />
+      <LayoutTabs />
       <a-layout>
         <a-layout>
           <LayoutContent v-if="routerView" />
@@ -23,6 +24,7 @@
 </template>
 <script>
 import LayoutHeader from './Header.vue'
+import LayoutTabs from './Tabs.vue'
 import LayoutContent from './Content.vue'
 import LayoutMenu from './Menu.vue'
 import LayoutUser from './User.vue'
@@ -32,6 +34,7 @@ import { IconMenuFold, IconMenuUnfold } from '@arco-design/web-vue/es/icon'
 export default {
   components: {
     LayoutHeader,
+    LayoutTabs,
     LayoutContent,
     LayoutMenu,
     LayoutUser,

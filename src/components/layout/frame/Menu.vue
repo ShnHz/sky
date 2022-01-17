@@ -1,7 +1,7 @@
 <template>
   <a-menu :default-open-keys="[]" :default-selected-keys="active" :style="{ width: '100%' }" @menu-item-click="onClickMenuItem">
     <a-menu-item key="Index">
-      <IconHome></IconHome>主页
+      <IconHome></IconHome>首页
     </a-menu-item>
     <a-menu-item key="403">
       <IconCommon></IconCommon>403
