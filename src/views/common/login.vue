@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:47:09 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-17 15:17:37
+ * @Last Modified time: 2022-01-17 16:46:02
  */
 <template >
   <div class="login-wrap">
@@ -11,11 +11,13 @@
 
     <section>
       <div class="left-wrap">
-        <div class="qrcode-btn-wrap">
-          <PluginsSvgIcon name="login_qrcode" />
+        <div class="qrcode-btn-wrap" @click="loginType = loginType == 'password' ? 'qrcode' : 'password'">
+          <PluginsSvgIcon name="login_qrcode" v-if="loginType == 'password'" />
+          <PluginsSvgIcon name="login_pc" v-else />
         </div>
         <div class="login-form-wrap">
-          <a-space direction="vertical" size="large" style="width:100%">
+          <!-- 账户密码登录 -->
+          <a-space direction="vertical" size="large" style="width:100%" v-if="loginType == 'password'" class="login-form-wrap__password">
             <h1>管理系统模板</h1>
             <a-form :model="form" layout="vertical">
               <a-form-item field="username" label="用户名">
@@ -45,11 +47,21 @@
                 </a-button>
               </a-form-item>
               <a-divider />
-              <p class="password-tip">
+              <p class="tip">
                 您是否忘记了账号/密码？
-                <a @click="()=>this.$notification.info('管理员手机号码：123456789')">联系管理员</a>
+                <a @click="()=>this.$notification.info('管理员手机号码：123456789')">请联系管理员</a>
               </p>
             </a-form>
+          </a-space>
+          <!-- 扫码登陆 -->
+          <a-space direction="vertical" size="large" style="width:100%" v-if="loginType == 'qrcode'" class="login-form-wrap__qrcode">
+            <h1>扫码登录管理系统模板</h1>
+            <img src="@img/common/qrcode.png" alt />
+            <a-divider />
+            <p class="tip">
+              如有问题，
+              <a @click="()=>this.$notification.info('管理员手机号码：123456789')">请联系管理员</a>
+            </p>
           </a-space>
         </div>
       </div>
@@ -75,6 +87,7 @@ export default {
   },
   data() {
     return {
+      loginType: 'password',
       form: {
         username: '',
         password: '',
@@ -158,7 +171,7 @@ export default {
           bottom: -8px;
           right: -8px;
           border-bottom: 80px solid #fff;
-          border-left: 80px solid transparent;
+          border-left: 60px solid transparent;
         }
       }
       .login-form-wrap {
@@ -172,18 +185,27 @@ export default {
           font-size: 24px;
           font-weight: 400;
         }
-        ::v-deep(.arco-btn) {
-          .arco-btn-icon {
-            position: absolute;
-            right: 8px;
-            opacity: 0.3;
-          }
-        }
-        .password-tip {
+        .tip {
           text-align: center;
           color: $--color-text-placeholder;
           a {
             color: $--color-primary;
+          }
+        }
+        .login-form-wrap__password {
+          ::v-deep(.arco-btn) {
+            .arco-btn-icon {
+              position: absolute;
+              right: 8px;
+              opacity: 0.3;
+            }
+          }
+        }
+        .login-form-wrap__qrcode {
+          text-align: center;
+          img {
+            width: 200px;
+            height: 200px;
           }
         }
       }

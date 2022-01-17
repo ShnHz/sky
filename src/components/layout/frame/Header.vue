@@ -10,15 +10,26 @@
     <div class="right-wrap">
       <span class="time-wrap">{{moment().format('dddd , D MMMM , YYYY')}}</span>
       <span class="notice-wrap">
-        <a-badge :count="1" dot :offset="[1, 0]">
-          <IconNotification />
-        </a-badge>
+        <a-tooltip content="通知">
+          <a-badge :count="1" dot :offset="[1, 0]">
+            <IconNotification />
+          </a-badge>
+        </a-tooltip>
       </span>
-      <span class="refresh-wrap" title="刷新" @click="refresh">
-        <IconLoop />
+      <span class="refresh-wrap" @click="refresh">
+        <a-tooltip content="刷新">
+          <IconLoop />
+        </a-tooltip>
       </span>
       <span class="fullscreen-wrap" title="全屏" @click="fullscreen">
-        <IconFullscreen />
+        <a-tooltip content="全屏">
+          <IconFullscreen />
+        </a-tooltip>
+      </span>
+      <span class="out-wrap" title="退出登录" @click="out">
+        <a-tooltip content="退出登录">
+          <IconPoweroff />
+        </a-tooltip>
       </span>
     </div>
   </a-layout-header>
@@ -28,10 +39,11 @@ import {
   IconNotification,
   IconLoop,
   IconFullscreen,
+  IconPoweroff,
 } from '@arco-design/web-vue/es/icon'
 
 export default {
-  components: { IconNotification, IconLoop, IconFullscreen },
+  components: { IconNotification, IconLoop, IconFullscreen, IconPoweroff },
   data() {
     return {}
   },
@@ -58,6 +70,9 @@ export default {
         element.webkitRequestFullscreen()
       }
     },
+    out() {
+      this.$router.push('/login')
+    },
   },
 }
 </script>
@@ -77,6 +92,11 @@ export default {
       margin-left: auto;
       svg {
         font-size: 16px;
+        color: $--textColor-3;
+        transition: color 0.2s ease;
+        &:hover {
+          color: #000;
+        }
       }
       > span {
         margin-left: 16px;
@@ -96,6 +116,9 @@ export default {
       .time-wrap {
         font-size: 12px;
         color: $--textColor-3;
+      }
+      .out-wrap {
+        cursor: pointer;
       }
     }
   }
