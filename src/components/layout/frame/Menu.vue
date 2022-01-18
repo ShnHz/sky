@@ -1,5 +1,5 @@
 <template>
-  <a-menu :default-open-keys="opens" :selected-keys="active" :style="{ width: '100%' }" @menu-item-click="onClickMenuItem">
+  <a-menu :default-open-keys="opens" :selected-keys="active" :style="{ width: '100%' }" @menu-item-click="onClickMenuItem" :level-indent="34">
     <template v-for="(item1,index1) in list" :key="`meun-lv1-${index1}`">
       <a-menu-item :key="item1.name" v-if="!(item1.child && item1.child.length > 0)">
         <component :is="item1.icon" />

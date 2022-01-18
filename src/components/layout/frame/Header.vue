@@ -82,7 +82,7 @@ export default {
     display: flex;
     align-items: center;
     height: 60px;
-    border-bottom: 1px solid $--sys-borderColor;
+    border-bottom: 1px solid #f6f6f6;
     .arco-breadcrumb {
       font-size: 16px;
       transition: all 0.2s ease;

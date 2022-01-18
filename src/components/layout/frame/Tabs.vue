@@ -111,8 +111,11 @@ $tabs-item-bg__hover: #dee1e6;
   .tabs-wrap {
     display: flex;
     align-items: flex-end;
-    width: 100%;
+    width: calc(100% + 48px);
     height: 50px;
+    position: relative;
+    left: -24px;
+    padding: 0 24px;
     border-bottom: 1px solid $--sys-borderColor;
     .arco-tabs {
       min-width: 100%;
@@ -132,8 +135,9 @@ $tabs-item-bg__hover: #dee1e6;
               display: none;
               position: relative;
               top: -1px;
+              margin-left: 10px;
               .arco-icon-hover-size-medium {
-                font-size: 12px;
+                font-size: 10px;
               }
             }
             &:hover {

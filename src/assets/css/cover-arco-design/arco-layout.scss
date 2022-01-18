@@ -1,8 +1,8 @@
 /*
  * @Author: sanghangning 
  * @Date: 2022-01-14 11:26:19 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-01-15 15:13:31
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2022-01-18 11:10:36
  */
 #vue-admin-wrap>.arco-layout {
     height: 100vh;
@@ -57,10 +57,6 @@
                 &.arco-menu-item.arco-menu-selected {
                     background: #fff;
                 }
-            }
-
-            .arco-menu-inline-content {
-                padding-left: 15px;
             }
 
             &.arco-menu-collapsed {

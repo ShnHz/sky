@@ -1,6 +1,6 @@
 <template>
   <a-layout-content>
-    <router-view v-slot="{ Component }" :key="key">
+    <router-view v-slot="{ Component }" :key="key" class="content-wrap">
       <transition mode="out-in" name="fade-transform">
         <keep-alive :include="cachedRoutes" :max="99">
           <component :is="Component" />
@@ -52,6 +52,7 @@ export default {
   transform: translateX(30px);
 }
 
-.vab-content {
+.arco-layout-content > .content-wrap {
+  padding: 24px 0;
 }
 </style>
