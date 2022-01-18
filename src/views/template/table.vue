@@ -9,7 +9,7 @@
               <a-radio value="2">类型2</a-radio>
             </a-radio-group>
           </a-form-item>
-          <a-form-item>
+          <a-form-item field="type" label="类型">
             <a-select placeholder="请选择类型" v-model="params.type" :style="{width:'200px'}">
               <a-option>Beijing</a-option>
               <a-option>Shanghai</a-option>
@@ -29,9 +29,28 @@
             <a-table-column title="Salary" data-index="salary"></a-table-column>
             <a-table-column title="Address" data-index="address"></a-table-column>
             <a-table-column title="Email" data-index="email"></a-table-column>
-            <a-table-column title="Optional">
+            <a-table-column title="Optional" align="right">
               <template #cell="{ record }">
-                <a-button @click="$modal.info({ title:'Name', content:record.name })">view</a-button>
+                <a-space>
+                  <a-button @click="$modal.info({ title:'Name', content:record.name })">view</a-button>
+                  <a-button>
+                    <template #icon>
+                      <IconPlus />
+                    </template>
+                  </a-button>
+                  <a-button>
+                    <template #icon>
+                      <IconEdit />
+                    </template>
+                  </a-button>
+                  <a-popconfirm content="请确认是否要删除此条数据?" @ok="()=>this.$notification.success('操作成功!')">
+                    <a-button status="danger">
+                      <template #icon>
+                        <IconDelete />
+                      </template>
+                    </a-button>
+                  </a-popconfirm>
+                </a-space>
               </template>
             </a-table-column>
           </template>
@@ -53,11 +72,15 @@
 </template>
 <script>
 import TableWrap from '@/components/layout/TableWrap.vue'
+import { IconPlus, IconEdit, IconDelete } from '@arco-design/web-vue/es/icon'
 
 export default {
   name: 'views-table',
   components: {
     TableWrap,
+    IconPlus,
+    IconEdit,
+    IconDelete,
   },
   data() {
     return {
