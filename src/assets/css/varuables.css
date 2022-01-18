@@ -2,13 +2,14 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:48:23 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-14 16:41:10
+ * @Last Modified time: 2022-01-18 16:24:18
  */
 
 :root {
     --viewBg: #fff;
 
     --color-primary: #1d63ff;
+    --color-primary-bg: #e8f3ff;
 
     --color-black: #000;
     --color-white: #fff;

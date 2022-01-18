@@ -5,6 +5,7 @@ import {
 // modules
 import common from './modules/common'
 import tabsBar from './modules/tabsBar'
+import menu from './modules/menu'
 
 const store = createStore({
   state: {},
@@ -12,7 +13,8 @@ const store = createStore({
   actions: {},
   modules: {
     common,
-    tabsBar
+    tabsBar,
+    menu
   },
 })
 

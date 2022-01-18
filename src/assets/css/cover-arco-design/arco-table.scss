@@ -1,0 +1,20 @@
+/*
+ * @Author: sanghangning 
+ * @Date: 2022-01-18 15:51:53 
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2022-01-18 15:57:04
+ */
+.arco-table {
+    &.arco-table-empty {
+        .arco-table-container{
+            border-bottom: none !important;
+        }
+        .arco-table-content {
+            height: 100%;
+
+            table {
+                height: 100%;
+            }
+        }
+    }
+}

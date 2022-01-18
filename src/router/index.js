@@ -3,14 +3,14 @@ import {
   createWebHistory
 } from 'vue-router'
 import common from './routers/common'
-import components from './routers/components'
+import template from './routers/template'
 
 import NProgress from 'nprogress'
 
 
 const routes = [
   ...common,
-  ...components
+  ...template
 ]
 
 const router = createRouter({

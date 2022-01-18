@@ -110,7 +110,7 @@ export default {
         {
           name: 'Components',
           icon: 'IconTiktokColor',
-          label: '组件',
+          label: '业务模板',
           child: [
             {
               name: 'ComponentsTable',
@@ -136,13 +136,13 @@ export default {
           if (list[i].child && list[i].child.length > 0) {
             isActive = find(list[i].child)
             if (isActive) {
-              arr.push(list[i].name)
+              arr.push(list[i])
             }
           }
         }
         return false
       }
-      return arr
+      return arr.map((item) => item.name)
     },
   },
   methods: {

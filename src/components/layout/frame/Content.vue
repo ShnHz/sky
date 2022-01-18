@@ -1,16 +1,16 @@
 <template>
   <a-layout-content>
     <router-view v-slot="{ Component }" :key="key" class="content-wrap">
-      <transition mode="out-in" name="fade-transform">
-        <keep-alive :include="cachedRoutes" :max="99">
+      <keep-alive :include="cachedRoutes" :max="99">
+        <transition name="content-view" appear>
           <component :is="Component" />
-        </keep-alive>
-      </transition>
+        </transition>
+      </keep-alive>
     </router-view>
   </a-layout-content>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'LayoutContent',
@@ -37,22 +37,23 @@ export default {
 }
 </script>
 <style lang="scss">
-.fade-transform-leave-active,
-.fade-transform-enter-active {
+.content-view-leave-active,
+.content-view-enter-active {
   transition: all 0.2s;
 }
 
-.fade-transform-enter {
+.content-view-enter-from,
+.content-view-leave-to {
   opacity: 0;
-  transform: translateX(-30px);
 }
-
-.fade-transform-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
+.content-view-leave-from,
+.content-view-enter-to {
+  opacity: 1;
 }
-
 .arco-layout-content > .content-wrap {
-  padding: 24px 0;
+  overflow: auto;
+  height: 100%;
+  position: relative;
+  padding: 24px 0 16px;
 }
 </style>

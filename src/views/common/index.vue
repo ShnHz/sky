@@ -1,12 +1,12 @@
 /*
  * @Author: sanghangning 
  * @Date: 2022-01-17 18:52:44 
- * @Last Modified by:   sanghangning 
- * @Last Modified time: 2022-01-17 18:52:44 
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2022-01-18 15:09:17
  */
 <template >
   <div class="index-wrap">
-    <Empty />
+    首页
   </div>
 </template>
 <script>

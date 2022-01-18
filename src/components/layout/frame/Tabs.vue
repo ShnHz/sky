@@ -105,7 +105,7 @@ export default {
 </script>
 <style lang="scss" >
 $tabs-item-bg: #fff;
-$tabs-item-bg__active: #e8f4ff;
+$tabs-item-bg__active: $--color-primary-bg;
 $tabs-item-bg__hover: #dee1e6;
 #vue-admin-wrap > .arco-layout {
   .tabs-wrap {

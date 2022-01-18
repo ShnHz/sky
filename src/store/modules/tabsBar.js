@@ -18,25 +18,6 @@ const mutations = {
       if (item.path === route.path) state.visitedRoutes.splice(index, 1)
     })
   },
-  delOthersVisitedRoute(state, route) {
-    state.visitedRoutes = state.visitedRoutes.filter(
-      (item) => item.meta.affix || item.path === route.path
-    )
-  },
-  delLeftVisitedRoute(state, route) {
-    let index = state.visitedRoutes.length
-    state.visitedRoutes = state.visitedRoutes.filter((item) => {
-      if (item.name === route.name) index = state.visitedRoutes.indexOf(item)
-      return item.meta.affix || index <= state.visitedRoutes.indexOf(item)
-    })
-  },
-  delRightVisitedRoute(state, route) {
-    let index = state.visitedRoutes.length
-    state.visitedRoutes = state.visitedRoutes.filter((item) => {
-      if (item.name === route.name) index = state.visitedRoutes.indexOf(item)
-      return item.meta.affix || index >= state.visitedRoutes.indexOf(item)
-    })
-  },
   delAllVisitedRoutes(state) {
     state.visitedRoutes = state.visitedRoutes.filter((item) => item.meta.affix)
   },
@@ -68,52 +49,11 @@ const actions = {
     commit('delVisitedRoute', route)
     return [...state.visitedRoutes]
   },
-  async delOthersRoutes({
-    dispatch,
-    state
-  }, route) {
-    await dispatch('delOthersVisitedRoute', route)
-    return {
-      visitedRoutes: [...state.visitedRoutes],
-    }
-  },
-  async delLeftRoutes({
-    dispatch,
-    state
-  }, route) {
-    await dispatch('delLeftVisitedRoute', route)
-    return {
-      visitedRoutes: [...state.visitedRoutes],
-    }
-  },
-  async delRightRoutes({
-    dispatch,
-    state
-  }, route) {
-    await dispatch('delRightVisitedRoute', route)
-    return {
-      visitedRoutes: [...state.visitedRoutes],
-    }
-  },
   delOthersVisitedRoute({
     commit,
     state
   }, route) {
     commit('delOthersVisitedRoute', route)
-    return [...state.visitedRoutes]
-  },
-  delLeftVisitedRoute({
-    commit,
-    state
-  }, route) {
-    commit('delLeftVisitedRoute', route)
-    return [...state.visitedRoutes]
-  },
-  delRightVisitedRoute({
-    commit,
-    state
-  }, route) {
-    commit('delRightVisitedRoute', route)
     return [...state.visitedRoutes]
   },
   async delAllRoutes({

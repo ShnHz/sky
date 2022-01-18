@@ -2,8 +2,9 @@
   <a-layout-header>
     <a-breadcrumb>
       <a-breadcrumb-item>管理系统模板</a-breadcrumb-item>
-      <a-breadcrumb-item>
-        <b>{{title}}</b>
+      <a-breadcrumb-item v-for="(item,index) in breadcrumbList" :key="`breadcrumb-item-${index}`">
+        <b v-if="index == breadcrumbList.length - 1">{{item.meta.title}}</b>
+        <span v-else>{{item.meta.title}}</span>
       </a-breadcrumb-item>
     </a-breadcrumb>
 
@@ -41,6 +42,7 @@ import {
   IconFullscreen,
   IconPoweroff,
 } from '@arco-design/web-vue/es/icon'
+import { mapGetters } from 'vuex'
 
 export default {
   components: { IconNotification, IconLoop, IconFullscreen, IconPoweroff },
@@ -48,8 +50,44 @@ export default {
     return {}
   },
   computed: {
+    ...mapGetters({
+      visitedMenus: 'menu/visitedMenus',
+    }),
+    breadcrumbList() {
+      return this.visitedMenus.filter((item) => {
+        return item.meta.title
+      })
+    },
     title() {
-      return this.$route ? this.$route.meta.title : 'GAC公用组件 - LayoutHeader'
+      return this.$route ? this.$route.meta.title : 'Header'
+    },
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      deep: true,
+      handler(newValue, oldValue) {
+        let _this = this
+        let arr = []
+        find(this.$router.options.routes)
+        function find(list) {
+          for (let i = 0; i < list.length; i++) {
+            let isActive = false
+            if (list[i].name == _this.$route.name) {
+              arr.unshift(list[i])
+              return true
+            }
+            if (list[i].children && list[i].children.length > 0) {
+              isActive = find(list[i].children)
+              if (isActive) {
+                arr.unshift(list[i])
+              }
+            }
+          }
+          return false
+        }
+        this.$store.commit('menu/updateVisitedMenus', arr)
+      },
     },
   },
   mounted() {},

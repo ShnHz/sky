@@ -1,16 +1,17 @@
 import Layout from '@/components/layout/frame/Layout.vue'
 
 export default [{
-    path: '/components',
+    path: '/template',
     component: Layout,
-    redirect: '/components/table',
+    redirect: '/template/table',
     meta: {
+        title: '业务模板',
         hasTabs: true,
     },
     children: [{
-        path: '/table',
+        path: '/template/table',
         name: 'ComponentsTable',
-        component: () => import('@/views/components/Table.vue'),
+        component: () => import('@/views/template/table.vue'),
         meta: {
             title: '表格',
         }
