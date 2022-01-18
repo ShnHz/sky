@@ -1,9 +1,10 @@
 /*
  * @Author: sanghangning 
  * @Date: 2019-12-11 11:23:58 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-01-13 21:57:49
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2022-01-18 18:50:57
  */
+import router from '../../router'
 
 export default {
     /**
@@ -89,5 +90,44 @@ export default {
         return arr.filter(function (val) {
             return !(!val || val === "");
         });
+    },
+    /**
+     * 将查询参数映射到url上
+     */
+    urlPushParams(route, params) {
+        let query = {}
+        for (let key in params) {
+            if (Object.prototype.toString.call(params[key]).slice(8, -1) === 'Array') {
+                query[key] = `-ary-[${params[key].join(',')}]`
+            } else {
+                query[key] = params[key]
+            }
+        }
+        router.push({
+            ...route,
+            query: {
+                ...route.query,
+                ...query
+            }
+        })
+    },
+    /**
+     * 获取url上的查询参数，并转换为对应类型
+     */
+    urlGetParams(query) {
+        console.log(query)
+        let params = {}
+        for (let key in query) {
+            if (query[key].includes('-ary-')) {
+                params[key] = query[key].match(/\[(.+?)\]/)[0].replace(/\[|]/g,'').split(',')
+            } else if (new RegExp(/^\d{1,}$/).test(query[key])) {
+                params[key] = parseInt(query[key])
+            } else {
+                params[key] = query[key]
+            }
+        }
+        console.log(params)
+
+        return params
     }
 }

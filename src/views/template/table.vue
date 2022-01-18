@@ -4,13 +4,13 @@
       <template #header>
         <a-form :model="params" layout="inline" size="large">
           <a-form-item field="type" label="类型">
-            <a-radio-group type="button" v-model="params.type">
-              <a-radio value="1">类型1</a-radio>
-              <a-radio value="2">类型2</a-radio>
+            <a-radio-group type="button" v-model="params.type" @change="paramsChange">
+              <a-radio value="type1">类型1</a-radio>
+              <a-radio value="type2">类型2</a-radio>
             </a-radio-group>
           </a-form-item>
-          <a-form-item field="type" label="类型">
-            <a-select placeholder="请选择类型" v-model="params.type" :style="{width:'200px'}">
+          <a-form-item field="types" label="类型" >
+            <a-select placeholder="请选择类型" v-model="params.types" :style="{width:'300px'}" @change="paramsChange" multiple>
               <a-option>Beijing</a-option>
               <a-option>Shanghai</a-option>
               <a-option>Guangzhou</a-option>
@@ -18,7 +18,7 @@
             </a-select>
           </a-form-item>
           <a-form-item field="word" label="搜索">
-            <a-input-search :style="{width:'200px'}" placeholder="请输入搜索关键字" v-model="params.word" />
+            <a-input-search :style="{width:'200px'}" placeholder="请输入搜索关键字" v-model="params.word" @change="paramsChange" />
           </a-form-item>
         </a-form>
       </template>
@@ -86,7 +86,8 @@ export default {
     return {
       params: {
         word: '',
-        type: '1',
+        type: 'type1',
+        types: [],
         current: 1,
         pageSize: 10,
       },
@@ -133,8 +134,17 @@ export default {
     }
   },
   computed: {},
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.params = {
+      ...this.params,
+      ...this.urlGetParams(this.$route.query),
+    }
+  },
+  methods: {
+    paramsChange() {
+      this.urlPushParams(this.$route, this.params)
+    },
+  },
 }
 </script>
 <style scoped lang="scss">
