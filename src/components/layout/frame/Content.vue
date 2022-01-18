@@ -24,7 +24,7 @@ export default {
     cachedRoutes() {
       const cachedRoutesArr = []
       this.visitedRoutes.forEach((item) => {
-        if (!item.meta.noKeepAlive) {
+        if (item.meta.keepAlive) {
           cachedRoutesArr.push(item.name)
         }
       })

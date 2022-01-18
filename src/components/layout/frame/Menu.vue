@@ -123,7 +123,27 @@ export default {
     active() {
       return [this.$route.name]
     },
-    opens() {},
+    opens() {
+      let _this = this
+      let arr = []
+      find(this.list)
+      function find(list) {
+        for (let i = 0; i < list.length; i++) {
+          let isActive = false
+          if (list[i].name == _this.$route.name) {
+            return true
+          }
+          if (list[i].child && list[i].child.length > 0) {
+            isActive = find(list[i].child)
+            if (isActive) {
+              arr.push(list[i].name)
+            }
+          }
+        }
+        return false
+      }
+      return arr
+    },
   },
   methods: {
     onClickMenuItem(item) {
