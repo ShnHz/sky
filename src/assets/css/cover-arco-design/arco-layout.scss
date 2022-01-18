@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2022-01-14 11:26:19 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-18 17:10:05
+ * @Last Modified time: 2022-01-18 18:58:14
  */
 #vue-admin-wrap>.arco-layout {
     height: 100vh;
@@ -99,9 +99,11 @@
         padding: 0 24px;
         box-shadow: -10px 0 50px 20px rgba(233, 233, 233, 0.5);
         transition: box-shadow $--sideBar-transition-duration ease;
-        &.is-collapsed{
+
+        &.is-collapsed {
             box-shadow: none;
         }
+
         >.arco-layout {
             overflow: hidden;
 

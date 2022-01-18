@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 11:23:58 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-18 18:50:57
+ * @Last Modified time: 2022-01-18 18:54:58
  */
 import router from '../../router'
 
@@ -115,7 +115,6 @@ export default {
      * 获取url上的查询参数，并转换为对应类型
      */
     urlGetParams(query) {
-        console.log(query)
         let params = {}
         for (let key in query) {
             if (query[key].includes('-ary-')) {
@@ -126,7 +125,6 @@ export default {
                 params[key] = query[key]
             }
         }
-        console.log(params)
 
         return params
     }

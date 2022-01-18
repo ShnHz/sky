@@ -39,6 +39,7 @@ import {
   IconTiktokColor,
   IconLarkColor,
   IconCommon,
+  IconTags
 } from '@arco-design/web-vue/es/icon'
 
 export default {
@@ -51,6 +52,7 @@ export default {
     IconTiktokColor,
     IconLarkColor,
     IconCommon,
+    IconTags,
   },
   data() {
     return {}
@@ -109,7 +111,7 @@ export default {
         },
         {
           name: 'Components',
-          icon: 'IconTiktokColor',
+          icon: 'IconTags',
           label: '业务模板',
           child: [
             {
