@@ -4,6 +4,9 @@ export default [{
         path: '/',
         component: Layout,
         redirect: '/index',
+        meta: {
+            hasTabs: true,
+        },
         children: [{
             path: '/index',
             name: 'Index',

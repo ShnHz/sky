@@ -4,6 +4,9 @@ export default [{
     path: '/components',
     component: Layout,
     redirect: '/components/table',
+    meta: {
+        hasTabs: true,
+    },
     children: [{
         path: '/table',
         name: 'ComponentsTable',

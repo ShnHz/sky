@@ -58,14 +58,16 @@ export default {
       })
     },
 
-    initAffixTabs(routes) {
-      routes.forEach((route) => {
-        if (route.meta && route.meta.affix)
+    initAffixTabs(routes, hasTabs) {
+      routes.forEach((item) => {
+        if (item.meta && item.meta.affix)
           this.addTabs({
-            ...route,
-            fullPath: route.path,
+            ...item,
+            fullPath: item.path,
+            hasTabs: hasTabs,
           })
-        if (route.children) this.initAffixTabs(route.children)
+        if (item.children)
+          this.initAffixTabs(item.children, item.meta && item.meta.hasTabs)
       })
     },
     toLastTag() {
@@ -81,19 +83,21 @@ export default {
       delAllVisitedRoutes: 'tabsBar/delAllVisitedRoutes',
     }),
     async addTabs(tag) {
-      if (tag.name && tag.meta && tag.meta.tagHidden !== true) {
-        let matched = [tag.name]
-        if (tag.matched) matched = tag.matched.map((item) => item.name)
-        await this.addVisitedRoute({
-          path: tag.path,
-          fullPath: tag.fullPath,
-          query: tag.query,
-          params: tag.params,
-          name: tag.name,
-          matched: matched,
-          meta: { ...tag.meta },
-        })
-        this.tabActive = tag.fullPath
+      if ((tag.matched && tag.matched[0].meta.hasTabs) || tag.hasTabs) {
+        if (tag.name && tag.meta && tag.meta.tagHidden !== true) {
+          let matched = [tag.name]
+          if (tag.matched) matched = tag.matched.map((item) => item.name)
+          await this.addVisitedRoute({
+            path: tag.path,
+            fullPath: tag.fullPath,
+            query: tag.query,
+            params: tag.params,
+            name: tag.name,
+            matched: matched,
+            meta: { ...tag.meta },
+          })
+          this.tabActive = tag.fullPath
+        }
       }
     },
   },
