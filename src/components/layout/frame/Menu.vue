@@ -110,12 +110,12 @@ export default {
           ],
         },
         {
-          name: 'Components',
+          name: 'Template',
           icon: 'IconTags',
           label: '业务模板',
           child: [
             {
-              name: 'ComponentsTable',
+              name: 'TemplateCommonTable',
               label: '表格',
             },
           ],
