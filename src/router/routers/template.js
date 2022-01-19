@@ -13,7 +13,14 @@ export default [{
         name: 'TemplateCommonTable',
         component: () => import('@/views/template/common-table.vue'),
         meta: {
-            title: '表格',
+            title: '基础表格',
+        }
+    }, {
+        path: '/template/complex-table1',
+        name: 'TemplateComplexTable1',
+        component: () => import('@/views/template/complex-table1.vue'),
+        meta: {
+            title: '复杂表格（添加、编辑、删除）',
         }
     }],
 }]

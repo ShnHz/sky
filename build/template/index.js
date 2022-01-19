@@ -19,13 +19,13 @@ const start = async () => {
         message: '请选择要添加的模板？',
         default: 0,
         choices: [
-            '基础表格页',
-            '复杂表格页（添加、编辑、删除）'
+            '基础表格',
+            '复杂表格（添加、编辑、删除）'
         ]
     }]).then((answers) => {
         let selectTemplate = {
-            '基础表格页': 'common-table',
-            '复杂表格页（添加、编辑、删除）': 'complex-table1',
+            '基础表格': 'common-table',
+            '复杂表格（添加、编辑、删除）': 'complex-table1',
         }
         option.templatePath = selectTemplate[answers['selectTemplate']]
     })

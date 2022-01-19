@@ -52,7 +52,7 @@ import TableWrap from '@/components/layout/TableWrap.vue'
 import { IconPlus, IconEdit, IconDelete } from '@arco-design/web-vue/es/icon'
 
 export default {
-name: 'views-{{templateName}}',
+name: '{{templateName}}',
 components: {
   TableWrap,
   IconPlus,

@@ -118,6 +118,10 @@ export default {
               name: 'TemplateCommonTable',
               label: '表格',
             },
+            {
+              name:'TemplateComplexTable1',
+              label:'复杂表格(添加、编辑、删除)',
+            }
           ],
         },
       ]
