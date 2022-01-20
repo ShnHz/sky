@@ -3,11 +3,13 @@
     <TableWrap>
       <template #header>
         <a-form :model="params" layout="inline" size="large">
-          <a-button style="margin-right:16px" @click="add">
-            <template #icon>
-              <IconPlus />
-            </template>
-          </a-button>
+          <div class="fun-wrap" style="margin-right:24px">
+            <a-button type="primary" @click="add">
+              <template #icon>
+                <IconPlus />
+              </template>
+            </a-button>
+          </div>
           <a-form-item field="type" label="类型">
             <a-radio-group type="button" v-model="params.type" @change="paramsChange">
               <a-radio value="type1">类型1</a-radio>
@@ -37,10 +39,9 @@
             <a-table-column title="Optional" align="right">
               <template #cell="{ record }">
                 <a-space>
-                  <a-button @click="$modal.info({ title:'Name', content:record.name })">view</a-button>
-                  <a-button>
+                  <a-button @click="edit(record)">
                     <template #icon>
-                      <IconEdit @click="edit(record)" />
+                      <IconEdit />
                     </template>
                   </a-button>
                   <a-popconfirm content="请确认是否要删除此条数据?" @ok="()=>this.$notification.success('操作成功!')">
@@ -98,8 +99,8 @@ export default {
       data: {
         count: 50,
         list: [
-          { 
-            id:'1',
+          {
+            id: '1',
             key: '1',
             name: 'Jane Doe',
             salary: 23000,

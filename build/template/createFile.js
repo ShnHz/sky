@@ -1,10 +1,9 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.createFileVue = function (template, OUTPUT_PATH) {
-    writeFile(`./src/${OUTPUT_PATH}`, template);
+exports.createFile = function (template, OUTPUT_PATH) {
+    writeFile(OUTPUT_PATH, template);
 }
-
 const dirCache = {};
 
 function writeFile(filePath, value) {
@@ -12,7 +11,11 @@ function writeFile(filePath, value) {
         mkdir(filePath);
     }
 
-    fs.appendFile(filePath, value, 'utf8')
+    fs.writeFile(filePath, value, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+    })
 }
 
 function mkdir(filePath) {

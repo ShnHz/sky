@@ -1,9 +1,4 @@
 var inquirer = require('inquirer')
-var render = require('json-templater/string');
-
-const {
-    createFileVue,
-} = require('./createFile.js')
 
 let option = {
     templatePath: '',
@@ -35,6 +30,7 @@ const start = async () => {
         type: 'input',
         name: 'templateName',
         message: '请输入添加的业务名称',
+        default: 'admin'
     }]).then((answers) => {
         option.templateName = answers['templateName']
     })
@@ -43,16 +39,15 @@ const start = async () => {
     await inquirer.prompt([{
         type: 'input',
         name: 'viewsOutputPath',
-        message: '请输入添加的views文件路径，例：/views/admin',
-        default: '/views/admin'
+        message: '请输入添加的views文件路径，例：/admin',
+        default: '/admin'
     }]).then((answers) => {
         option.viewsOutputPath = answers['viewsOutputPath']
     })
 
-    // 创建vue文件
-    createFileVue(render(require(`./${option.templatePath}/VUE_TEMPLATE.js`), {
-        templateName: option.templateName
-    }), `${option.viewsOutputPath}/${option.templateName}.vue`)
+    // 创建对面模板文件
+    const initFun = require(`./${option.templatePath}/index.js`)
+    initFun(option)
 }
 
 start()

@@ -1,16 +1,24 @@
 // templateName 业务名称
+// viewsOutputPath views文件路径
 module.exports = `<template >
 <div class="{{templateName}}-wrap">
   <TableWrap>
     <template #header>
       <a-form :model="params" layout="inline" size="large">
+        <div class="fun-wrap" style="margin-right:24px">
+          <a-button type="primary" @click="add">
+            <template #icon>
+              <IconPlus />
+            </template>
+          </a-button>
+        </div>
         <a-form-item field="type" label="类型">
           <a-radio-group type="button" v-model="params.type" @change="paramsChange">
             <a-radio value="type1">类型1</a-radio>
             <a-radio value="type2">类型2</a-radio>
           </a-radio-group>
         </a-form-item>
-        <a-form-item field="types" label="类型" >
+        <a-form-item field="types" label="类型">
           <a-select placeholder="请选择类型" v-model="params.types" :style="{width:'300px'}" @change="paramsChange" multiple>
             <a-option>Beijing</a-option>
             <a-option>Shanghai</a-option>
@@ -30,6 +38,24 @@ module.exports = `<template >
           <a-table-column title="Salary" data-index="salary"></a-table-column>
           <a-table-column title="Address" data-index="address"></a-table-column>
           <a-table-column title="Email" data-index="email"></a-table-column>
+          <a-table-column title="Optional" align="right">
+            <template #cell="{ record }">
+              <a-space>
+                <a-button @click="edit(record)">
+                  <template #icon>
+                    <IconEdit />
+                  </template>
+                </a-button>
+                <a-popconfirm content="请确认是否要删除此条数据?" @ok="()=>this.$notification.success('操作成功!')">
+                  <a-button status="danger">
+                    <template #icon>
+                      <IconDelete />
+                    </template>
+                  </a-button>
+                </a-popconfirm>
+              </a-space>
+            </template>
+          </a-table-column>
         </template>
       </a-table>
     </template>
@@ -45,16 +71,20 @@ module.exports = `<template >
       />
     </template>
   </TableWrap>
+
+  <DrawerEditData :visible="drawer.drawerEditData.visible" :data="drawer.drawerEditData.data" @close="drawer.drawerEditData.visible = false" />
 </div>
 </template>
 <script>
 import TableWrap from '@/components/layout/TableWrap.vue'
+import DrawerEditData from '@/components{{viewsOutputPath}}/drawer/DrawerEditData.vue'
 import { IconPlus, IconEdit, IconDelete } from '@arco-design/web-vue/es/icon'
 
 export default {
-name: '{{templateName}}',
+name: 'views-{{templateName}}',
 components: {
   TableWrap,
+  DrawerEditData,
   IconPlus,
   IconEdit,
   IconDelete,
@@ -72,41 +102,20 @@ data() {
       count: 50,
       list: [
         {
+          id: '1',
           key: '1',
           name: 'Jane Doe',
           salary: 23000,
           address: '32 Park Road, London',
           email: 'jane.doe@example.com',
         },
-        {
-          key: '2',
-          name: 'Alisa Ross',
-          salary: 25000,
-          address: '35 Park Road, London',
-          email: 'alisa.ross@example.com',
-        },
-        {
-          key: '3',
-          name: 'Kevin Sandra',
-          salary: 22000,
-          address: '31 Park Road, London',
-          email: 'kevin.sandra@example.com',
-        },
-        {
-          key: '4',
-          name: 'Ed Hellen',
-          salary: 17000,
-          address: '42 Park Road, London',
-          email: 'ed.hellen@example.com',
-        },
-        {
-          key: '5',
-          name: 'William Smith',
-          salary: 27000,
-          address: '62 Park Road, London',
-          email: 'william.smith@example.com',
-        },
       ],
+    },
+    drawer: {
+      drawerEditData: {
+        visible: false,
+        data: {},
+      },
     },
   }
 },
@@ -120,6 +129,14 @@ mounted() {
 methods: {
   paramsChange() {
     this.urlPushParams(this.$route, this.params)
+  },
+  edit(row) {
+    this.drawer.drawerEditData.visible = true
+    this.drawer.drawerEditData.data = row
+  },
+  add() {
+    this.drawer.drawerEditData.visible = true
+    this.drawer.drawerEditData.data = {}
   },
 },
 }
