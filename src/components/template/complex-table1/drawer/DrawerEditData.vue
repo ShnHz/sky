@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     title() {
-      return this.data.id ? '编辑' + 'this.data.name' : '新增'
+      return this.data.id ? '编辑' + this.data.name : '新增'
     },
   },
   data() {
