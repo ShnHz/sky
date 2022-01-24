@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:github": "vite build & node build/github/index.js",
     "serve": "vite preview",
     "create:template": "node build/template/index.js"
   },
