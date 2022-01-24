@@ -1,0 +1,1 @@
+import{B as a,C as e,o as d,c as t}from"./vendor.1cf13a6e.js";const c={name:"index",data:()=>({}),computed:{},mounted(){},methods:{}};a("data-v-592c748c");const o={class:"index-wrap"};e(),c.render=function(a,e,c,s,n,r){return d(),t("div",o," 首页 ")},c.__scopeId="data-v-592c748c";export{c as default};
