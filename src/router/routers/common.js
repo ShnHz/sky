@@ -22,7 +22,7 @@ export default [{
         component: () => import('@/views/common/404.vue'),
     },
     {
-        path: '/:pathMatch(.*)*',
+        path: `${import.meta.env.VITE_APP_NAME}/:pathMatch(.*)*`,
         redirect: '/404'
     },
     {
