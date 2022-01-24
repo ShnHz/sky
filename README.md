@@ -2,6 +2,8 @@
 </br>
 </br>
 
+[在线预览](https://shnhz.github.io/vue-admin)
+
 ## 上手指南
 以下指南将帮助你在本地机器上安装和运行该项目，进行开发和测试。
 ### Project setup
