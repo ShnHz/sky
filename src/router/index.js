@@ -14,7 +14,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.MODE == 'development' ? '' : '/vue-admin/'),
   routes,
   scrollBehavior(to, from, savedPosition) {
     // 始终滚动到顶部

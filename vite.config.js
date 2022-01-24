@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [vue(), svgBuilder('./src/assets/svg/svg/')],
   server: {
     proxy: {
-      '/devapi': 'http://10.219.98.22:99'
+      '/devapi': '0.0.0.0'
     }
   },
   resolve: {
