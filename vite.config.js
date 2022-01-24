@@ -10,6 +10,10 @@ import {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/vue-admin/',
+  build: {
+    outDir: 'docs'
+  },
   plugins: [vue(), svgBuilder('./src/assets/svg/svg/')],
   server: {
     proxy: {
