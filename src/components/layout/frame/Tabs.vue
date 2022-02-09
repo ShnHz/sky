@@ -8,7 +8,7 @@
       </a-tabs>
 
       <template #content>
-        <a-doption @click="delAllVisitedRoutes">关闭全部</a-doption>
+        <a-doption @click="delAllVisitedRoutesFun">关闭全部</a-doption>
       </template>
     </a-dropdown>
   </div>
@@ -100,6 +100,12 @@ export default {
         }
       }
     },
+    delAllVisitedRoutesFun() {
+      this.delAllVisitedRoutes()
+      this.$router.push({
+        name: 'Index',
+      })
+    },
   },
 }
 </script>
@@ -127,6 +133,7 @@ $tabs-item-bg__hover: #dee1e6;
           .arco-tabs-tab {
             padding: 8px 24px;
             margin-right: -18px;
+            margin-top: 1px;
             border: 0;
             background: $tabs-item-bg;
             transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);

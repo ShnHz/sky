@@ -1,6 +1,6 @@
 <template >
   <div class="index-wrap">
-    <TableWrap>
+    <TableWrap type="1" boxShadow>
       <template #header>
         <a-form :model="params" layout="inline" size="large">
           <a-form-item field="type" label="类型">
@@ -23,7 +23,7 @@
         </a-form>
       </template>
       <template #body>
-        <a-table :data="data.list" :pagination="false" :class="{'arco-table-empty':data.list.length == 0}" stripe>
+        <a-table :data="data.list" :pagination="false" :class="{'arco-table-empty':data.list.length == 0}" stripe :scroll="{y:'0px'}">
           <template #columns>
             <a-table-column title="Name" data-index="name"></a-table-column>
             <a-table-column title="Salary" data-index="salary"></a-table-column>
@@ -70,6 +70,181 @@ export default {
       data: {
         count: 50,
         list: [
+          {
+            key: '1',
+            name: 'Jane Doe',
+            salary: 23000,
+            address: '32 Park Road, London',
+            email: 'jane.doe@example.com',
+          },
+          {
+            key: '2',
+            name: 'Alisa Ross',
+            salary: 25000,
+            address: '35 Park Road, London',
+            email: 'alisa.ross@example.com',
+          },
+          {
+            key: '3',
+            name: 'Kevin Sandra',
+            salary: 22000,
+            address: '31 Park Road, London',
+            email: 'kevin.sandra@example.com',
+          },
+          {
+            key: '4',
+            name: 'Ed Hellen',
+            salary: 17000,
+            address: '42 Park Road, London',
+            email: 'ed.hellen@example.com',
+          },
+          {
+            key: '5',
+            name: 'William Smith',
+            salary: 27000,
+            address: '62 Park Road, London',
+            email: 'william.smith@example.com',
+          },
+          {
+            key: '1',
+            name: 'Jane Doe',
+            salary: 23000,
+            address: '32 Park Road, London',
+            email: 'jane.doe@example.com',
+          },
+          {
+            key: '2',
+            name: 'Alisa Ross',
+            salary: 25000,
+            address: '35 Park Road, London',
+            email: 'alisa.ross@example.com',
+          },
+          {
+            key: '3',
+            name: 'Kevin Sandra',
+            salary: 22000,
+            address: '31 Park Road, London',
+            email: 'kevin.sandra@example.com',
+          },
+          {
+            key: '4',
+            name: 'Ed Hellen',
+            salary: 17000,
+            address: '42 Park Road, London',
+            email: 'ed.hellen@example.com',
+          },
+          {
+            key: '5',
+            name: 'William Smith',
+            salary: 27000,
+            address: '62 Park Road, London',
+            email: 'william.smith@example.com',
+          },
+          {
+            key: '1',
+            name: 'Jane Doe',
+            salary: 23000,
+            address: '32 Park Road, London',
+            email: 'jane.doe@example.com',
+          },
+          {
+            key: '2',
+            name: 'Alisa Ross',
+            salary: 25000,
+            address: '35 Park Road, London',
+            email: 'alisa.ross@example.com',
+          },
+          {
+            key: '3',
+            name: 'Kevin Sandra',
+            salary: 22000,
+            address: '31 Park Road, London',
+            email: 'kevin.sandra@example.com',
+          },
+          {
+            key: '4',
+            name: 'Ed Hellen',
+            salary: 17000,
+            address: '42 Park Road, London',
+            email: 'ed.hellen@example.com',
+          },
+          {
+            key: '5',
+            name: 'William Smith',
+            salary: 27000,
+            address: '62 Park Road, London',
+            email: 'william.smith@example.com',
+          },
+          {
+            key: '1',
+            name: 'Jane Doe',
+            salary: 23000,
+            address: '32 Park Road, London',
+            email: 'jane.doe@example.com',
+          },
+          {
+            key: '2',
+            name: 'Alisa Ross',
+            salary: 25000,
+            address: '35 Park Road, London',
+            email: 'alisa.ross@example.com',
+          },
+          {
+            key: '3',
+            name: 'Kevin Sandra',
+            salary: 22000,
+            address: '31 Park Road, London',
+            email: 'kevin.sandra@example.com',
+          },
+          {
+            key: '4',
+            name: 'Ed Hellen',
+            salary: 17000,
+            address: '42 Park Road, London',
+            email: 'ed.hellen@example.com',
+          },
+          {
+            key: '5',
+            name: 'William Smith',
+            salary: 27000,
+            address: '62 Park Road, London',
+            email: 'william.smith@example.com',
+          },
+          {
+            key: '1',
+            name: 'Jane Doe',
+            salary: 23000,
+            address: '32 Park Road, London',
+            email: 'jane.doe@example.com',
+          },
+          {
+            key: '2',
+            name: 'Alisa Ross',
+            salary: 25000,
+            address: '35 Park Road, London',
+            email: 'alisa.ross@example.com',
+          },
+          {
+            key: '3',
+            name: 'Kevin Sandra',
+            salary: 22000,
+            address: '31 Park Road, London',
+            email: 'kevin.sandra@example.com',
+          },
+          {
+            key: '4',
+            name: 'Ed Hellen',
+            salary: 17000,
+            address: '42 Park Road, London',
+            email: 'ed.hellen@example.com',
+          },
+          {
+            key: '5',
+            name: 'William Smith',
+            salary: 27000,
+            address: '62 Park Road, London',
+            email: 'william.smith@example.com',
+          },
           {
             key: '1',
             name: 'Jane Doe',

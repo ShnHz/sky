@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:48:17 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-14 22:36:31
+ * @Last Modified time: 2022-02-09 17:15:43
  */
 body,
 div,
@@ -456,4 +456,8 @@ img[lazy="error"] {
     height: 100%;
     background: #f5f7fa;
     color: #909399;
+}
+
+.is-box-shadow {
+    box-shadow: 0 4px 10px rgb(242,243,245);
 }

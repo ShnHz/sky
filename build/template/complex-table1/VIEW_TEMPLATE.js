@@ -2,7 +2,7 @@
 // viewsOutputPath views文件路径
 module.exports = `<template >
 <div class="{{templateName}}-wrap">
-  <TableWrap>
+  <TableWrap boxShadow>
     <template #header>
       <a-form :model="params" layout="inline" size="large">
         <div class="fun-wrap" style="margin-right:24px">
@@ -32,7 +32,7 @@ module.exports = `<template >
       </a-form>
     </template>
     <template #body>
-      <a-table :data="data.list" :pagination="false" :class="{'arco-table-empty':data.list.length == 0}" stripe>
+      <a-table :data="data.list" :pagination="false" :class="{'arco-table-empty':data.list.length == 0}" stripe :scroll="{y:'0px'}">
         <template #columns>
           <a-table-column title="Name" data-index="name"></a-table-column>
           <a-table-column title="Salary" data-index="salary"></a-table-column>
