@@ -51,7 +51,7 @@ export default {
   opacity: 1;
 }
 .arco-layout-content > .content-wrap {
-  overflow: auto;
+  // overflow: auto;
   height: 100%;
   position: relative;
   padding: 24px 0 16px;

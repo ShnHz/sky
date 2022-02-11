@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:48:17 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-02-09 17:15:43
+ * @Last Modified time: 2022-02-11 11:47:23
  */
 body,
 div,
@@ -459,5 +459,5 @@ img[lazy="error"] {
 }
 
 .is-box-shadow {
-    box-shadow: 0 4px 10px rgb(242,243,245);
+    box-shadow: $--box-shadow;
 }
