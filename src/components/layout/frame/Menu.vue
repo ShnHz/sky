@@ -39,7 +39,7 @@ import {
   IconTiktokColor,
   IconLarkColor,
   IconCommon,
-  IconTags
+  IconTags,
 } from '@arco-design/web-vue/es/icon'
 
 export default {
@@ -119,9 +119,13 @@ export default {
               label: '表格',
             },
             {
-              name:'TemplateComplexTable1',
-              label:'复杂表格(添加、编辑、删除)',
-            }
+              name: 'TemplateComplexTable1',
+              label: '复杂表格 (添加、编辑、删除)',
+            },
+            {
+              name: 'TemplateComplexTable2',
+              label: '复杂表格 (侧边筛选)',
+            },
           ],
         },
       ]

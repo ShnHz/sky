@@ -85,7 +85,7 @@ export default {
                   table {
                     position: absolute;
                     width: 100%;
-                    height: 100%;
+                    max-height: 100%;
                   }
                 }
                 .arco-table-tr:last-child {
