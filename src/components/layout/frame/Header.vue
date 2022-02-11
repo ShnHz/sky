@@ -119,6 +119,7 @@ export default {
   .arco-layout-header {
     display: flex;
     align-items: center;
+    min-width: 880px;
     height: 60px;
     border-bottom: 1px solid #f6f6f6;
     .arco-breadcrumb {
