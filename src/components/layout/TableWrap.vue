@@ -8,7 +8,9 @@
         <div class="table-wrap__content" :class="{'is-box-shadow':boxShadow}">
           <div class="table-wrap__body">
             <section>
-              <slot name="body"></slot>
+              <a-spin :loading="loading" :tip="loadingTip" dot>
+                <slot name="body"></slot>
+              </a-spin>
             </section>
           </div>
           <div class="table-wrap__footer">
@@ -41,6 +43,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    loadingTip: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {}
@@ -50,6 +60,9 @@ export default {
 <style lang="scss" scoped>
 .table-wrap {
   height: 100%;
+  .arco-spin {
+    height: 100%;
+  }
   &.table-wrap__type0 {
     .content-wrap {
       display: flex;
@@ -71,7 +84,6 @@ export default {
           height: 100% !important;
           .arco-spin {
             display: block;
-            height: 100%;
             .arco-table-container {
               height: 100%;
               border: none;
