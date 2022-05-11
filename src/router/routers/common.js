@@ -36,6 +36,19 @@ export default [{
         component: () => import('@/views/common/500.vue'),
     },
     {
+        name: 'noHasPermissions',
+        path: '/no-has-permissions',
+        component: () => import('@/views/common/no-has-permissions.vue'),
+    },
+    {
+        name: 'noHasPermissionsNoRouter',
+        path: '/no-has-permissions-no-router',
+        component: () => import('@/views/common/no-has-permissions.vue'),
+        meta: {
+            hasPermissions: false
+        }
+    },
+    {
         name: 'Login',
         path: '/login',
         component: () => import('@/views/common/login.vue'),

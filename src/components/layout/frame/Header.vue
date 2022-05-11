@@ -27,10 +27,13 @@
           <IconFullscreen />
         </a-tooltip>
       </span>
-      <span class="out-wrap" title="退出登录" @click="out">
+      <span class="out-wrap" title="退出登录" @click="out" v-if="$store.state.common.userInfo.userId">
         <a-tooltip content="退出登录">
           <IconPoweroff />
         </a-tooltip>
+      </span>
+      <span class="out-wrap" title="登录" @click="$router.push('/login')" v-else>
+        <a-button>登录</a-button>
       </span>
     </div>
   </a-layout-header>

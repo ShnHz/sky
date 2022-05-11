@@ -42,6 +42,23 @@ import {
 } from '@/plugins/index'
 loadAllPlugins(app)
 
-app.use(store).use(router).mixin(Mixins)
 
-app.mount('#app')
+
+Promise.all([getUserInfo()]).then(() => {
+    app.use(store).use(router).mixin(Mixins)
+    app.mount('#app')
+})
+
+async function getUserInfo() {
+    //     // 获取用户信息
+    //     await api.user
+    //         .getUserInfo()
+    //         .then((res) => {
+    //             store.commit('common/setUserInfo', {
+    //                 ...res.data.data.user_info,
+    //                 permission: res.data.data.__permission,
+    //             })
+    //             store.commit('common/setToken', res.data.data.__token)
+    //         })
+    //         .catch((error) => {})
+}
