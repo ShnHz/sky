@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 11:23:58 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-02-11 11:29:43
+ * @Last Modified time: 2022-05-09 14:57:07
  */
 import router from '../../router'
 
@@ -117,13 +117,15 @@ export default {
     urlGetParams(query) {
         let params = {}
         for (let key in query) {
-            if (query[key].includes('-ary-')) {
-                let arrStr = query[key].match(/\[(.+?)\]/)
-                params[key] = arrStr ? arrStr[0].replace(/\[|]/g, '').split(',') : []
-            } else if (new RegExp(/^\d{1,}$/).test(query[key])) {
-                params[key] = parseInt(query[key])
-            } else {
-                params[key] = query[key]
+            if (query[key]) {
+                if (query[key].includes('-ary-')) {
+                    let arrStr = query[key].match(/\[(.+?)\]/)
+                    params[key] = arrStr ? arrStr[0].replace(/\[|]/g, '').split(',') : []
+                } else if (new RegExp(/^\d{1,}$/).test(query[key])) {
+                    params[key] = parseInt(query[key])
+                } else {
+                    params[key] = query[key]
+                }
             }
         }
 

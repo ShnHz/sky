@@ -20,8 +20,13 @@ export default ({
     },
     plugins: [vue(), svgBuilder('./src/assets/svg/svg/')],
     server: {
+      port: 8888,
       proxy: {
-        '/devapi': '0.0.0.0'
+        '/devapi': {
+          target: 'xxxxxxxx',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/devapi/, '')
+        },
       }
     },
     resolve: {

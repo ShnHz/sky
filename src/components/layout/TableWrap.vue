@@ -68,8 +68,9 @@ export default {
         border: 1px solid var(--color-neutral-3);
         border-radius: 4px;
         ::v-deep(.arco-table) {
-          height: 100%;
+          height: 100% !important;
           .arco-spin {
+            display: block;
             height: 100%;
             .arco-table-container {
               height: 100%;

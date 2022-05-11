@@ -28,6 +28,7 @@ app.config.globalProperties.$bus = new Bus()
 // config
 app.config.globalProperties.$window = window
 app.config.globalProperties.$document = document
+window.$vueApp = app
 
 // components
 import {
