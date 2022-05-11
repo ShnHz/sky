@@ -111,6 +111,11 @@ export default {
           }
         }
       }
+      &.is-box-shadow {
+        > section {
+          border: none;
+        }
+      }
     }
     .table-wrap__footer {
       display: flex;
