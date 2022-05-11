@@ -15,12 +15,14 @@ const start = async () => {
         default: 0,
         choices: [
             '基础表格',
-            '复杂表格（添加、编辑、删除）'
+            '复杂表格（添加、编辑、删除）',
+            '复杂表格（侧边筛选）'
         ]
     }]).then((answers) => {
         let selectTemplate = {
             '基础表格': 'common-table',
             '复杂表格（添加、编辑、删除）': 'complex-table1',
+            '复杂表格（侧边筛选）': 'complex-table2',
         }
         option.templatePath = selectTemplate[answers['selectTemplate']]
     })

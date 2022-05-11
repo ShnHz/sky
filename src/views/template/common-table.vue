@@ -1,6 +1,6 @@
 <template >
   <div class="index-wrap">
-    <TableWrap type="1" boxShadow>
+    <TableWrap type="1" boxShadow :loading="loading">
       <template #header>
         <a-form :model="params" layout="inline" size="large">
           <a-form-item field="type" label="类型">
@@ -9,7 +9,7 @@
               <a-radio value="type2">类型2</a-radio>
             </a-radio-group>
           </a-form-item>
-          <a-form-item field="types" label="类型" >
+          <a-form-item field="types" label="类型">
             <a-select placeholder="请选择类型" v-model="params.types" :style="{width:'300px'}" @change="paramsChange" multiple>
               <a-option>Beijing</a-option>
               <a-option>Shanghai</a-option>
@@ -60,6 +60,7 @@ export default {
   },
   data() {
     return {
+      loading: true,
       params: {
         word: '',
         type: 'type1',
@@ -290,8 +291,22 @@ export default {
       ...this.params,
       ...this.urlGetParams(this.$route.query),
     }
+    this.getInfo()
   },
   methods: {
+    getInfo() {
+      let _this = this
+      this.loading = true
+      Promise.all([this.getList()]).then(() => {
+        _this.loading = false
+      })
+    },
+    async getList() {
+      // let _this = this
+      // await this.$api.customer.get_customer_list(this.params).then((res) => {
+      //   _this.data.list = res.data.data
+      // })
+    },
     paramsChange() {
       this.urlPushParams(this.$route, this.params)
     },

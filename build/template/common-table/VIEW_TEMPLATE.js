@@ -1,7 +1,7 @@
 // templateName 业务名称
 module.exports = `<template >
 <div class="{{templateName}}-wrap">
-  <TableWrap type="1" boxShadow>
+  <TableWrap type="1" boxShadow :loading="loading">
     <template #header>
       <a-form :model="params" layout="inline" size="large">
         <a-form-item field="type" label="类型">
@@ -61,6 +61,7 @@ components: {
 },
 data() {
   return {
+    loading:true,
     params: {
       word: '',
       type: 'type1',
@@ -116,8 +117,22 @@ mounted() {
     ...this.params,
     ...this.urlGetParams(this.$route.query),
   }
+  this.getInfo()
 },
 methods: {
+  getInfo() {
+    let _this = this
+    this.loading = true
+    Promise.all([this.getList()]).then(() => {
+      _this.loading = false
+    })
+  },
+  async getList() {
+    // let _this = this
+    // await this.$api.customer.get_customer_list(this.params).then((res) => {
+    //   _this.data.list = res.data.data
+    // })
+  },
   paramsChange() {
     this.urlPushParams(this.$route, this.params)
   },

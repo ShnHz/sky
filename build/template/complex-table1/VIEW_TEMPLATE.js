@@ -2,7 +2,7 @@
 // viewsOutputPath views文件路径
 module.exports = `<template >
 <div class="{{templateName}}-wrap">
-  <TableWrap boxShadow>
+  <TableWrap boxShadow :loading="loading">
     <template #header>
       <a-form :model="params" layout="inline" size="large">
         <div class="fun-wrap" style="margin-right:24px">
@@ -91,6 +91,7 @@ components: {
 },
 data() {
   return {
+    loading: true,
     params: {
       word: '',
       type: 'type1',
@@ -125,8 +126,22 @@ mounted() {
     ...this.params,
     ...this.urlGetParams(this.$route.query),
   }
+  this.getInfo()
 },
 methods: {
+  getInfo() {
+    let _this = this
+    this.loading = true
+    Promise.all([this.getList()]).then(() => {
+      _this.loading = false
+    })
+  },
+  async getList() {
+    // let _this = this
+    // await this.$api.customer.get_customer_list(this.params).then((res) => {
+    //   _this.data.list = res.data.data
+    // })
+  },
   paramsChange() {
     this.urlPushParams(this.$route, this.params)
   },
