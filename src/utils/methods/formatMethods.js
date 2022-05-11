@@ -1,8 +1,8 @@
 /*
  * @Author: sanghangning 
  * @Date: 2019-12-11 11:23:58 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-01-13 21:59:13
+ * @Last Modified by: sanghangning
+ * @Last Modified time: 2022-05-11 15:19:17
  */
 
 export default {
@@ -25,7 +25,7 @@ export default {
      * @param {Object} paramObj 对象值
      * @return {String}
      */
-    formatFormData(paramObj, arrayBrackets = false, encodeURI = true) {
+    formatFormData(paramObj, arrayBrackets = true, encodeURI = false) {
         let formData = new FormData
         Object.keys(paramObj).map((key) => {
             if (Array.isArray(paramObj[key])) {

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+let _app = null
 // 中断重复请求
 const pendingRequest = new Map();
 
@@ -51,7 +52,17 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   response => {
     removePendingRequest(response.config); // 从pendingRequest对象中移除请求
-    return response;
+
+    // 跳转登录操作
+    // if (!response.data.success && !response.data.valid) {
+    //   location.href = `${window.location.origin}/login`
+    // }
+    if (response.data.success) {
+      return response;
+    } else {
+      _app.config.globalProperties.$message.error(response.data.message);
+      throw new Error(response.data.message)
+    }
   },
   error => {
     removePendingRequest(error.config || {}); // 从pendingRequest对象中移除请求
@@ -64,6 +75,7 @@ axios.interceptors.response.use(
   }
 );
 
-export default function(app) {
+export default function (app) {
+  _app = app
   app.config.globalProperties.$http = axios;
 }
