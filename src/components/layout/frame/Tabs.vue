@@ -164,7 +164,7 @@ $tabs-item-bg__hover: #dee1e6;
               }
             }
             &.arco-tabs-tab-active {
-              padding: 8px 30px;
+              padding: 8px 24px 8px 30px;
               background: $tabs-item-bg__active;
               -webkit-mask: url('/static/img/bg/tabsbg.png');
               -webkit-mask-size: 100% 100%;
