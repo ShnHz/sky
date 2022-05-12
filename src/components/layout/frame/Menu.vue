@@ -154,7 +154,7 @@ export default {
       ]
     },
     active() {
-      return [this.$route.name]
+      return [this.$route.path]
     },
     opens() {
       let _this = this
