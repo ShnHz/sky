@@ -143,12 +143,17 @@ $tabs-item-bg__hover: #dee1e6;
               position: relative;
               top: -1px;
               margin-left: 10px;
+              font-size: 12px;
+
               .arco-icon-hover-size-medium {
                 font-size: 10px;
               }
+              &::before {
+                transform: translate(-50%, -46%);
+              }
             }
             &:hover {
-              padding: 8px 30px;
+              padding: 8px 24px 8px 30px;
               background: $tabs-item-bg__hover;
               -webkit-mask: url('/static/img/bg/tabsbg.png');
               -webkit-mask-size: 100% 100%;
