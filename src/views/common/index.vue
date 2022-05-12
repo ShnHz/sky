@@ -2,11 +2,11 @@
  * @Author: sanghangning 
  * @Date: 2022-01-17 18:52:44 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-01-18 15:09:17
+ * @Last Modified time: 2022-05-12 10:34:35
  */
 <template >
   <div class="index-wrap">
-    首页
+    <NoPermisssions />
   </div>
 </template>
 <script>
@@ -22,5 +22,10 @@ export default {
 </script>
 <style scoped lang="scss">
 .index-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
 }
 </style>

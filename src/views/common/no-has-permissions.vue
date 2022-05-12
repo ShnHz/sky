@@ -1,9 +1,6 @@
 <template>
   <div class="page-no-has-permissions-wrap">
-    <a-result :status="null" subtitle="您没有查看该页面的权限">
-      <template #icon>
-        <!-- <IconFaceSmileFill /> -->
-      </template>
+    <a-result status="403" subtitle="您没有查看该页面的权限">
       <template #extra>
         <a-space>
           <a-button @click="mixins_contactAdministrator">联系管理员</a-button>

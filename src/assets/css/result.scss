@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 10:48:17 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-02-11 12:07:54
+ * @Last Modified time: 2022-05-12 10:38:34
  */
 body,
 div,
@@ -462,4 +462,8 @@ img[lazy="error"] {
     border-radius: 4px;
     box-shadow: $--box-shadow;
     border: 1px solid var(--color-neutral-3);
+}
+
+.viewer-toolbar {
+    background: #000;
 }
