@@ -2,10 +2,56 @@
  * @Author: sanghangning 
  * @Date: 2019-12-11 15:18:10 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2019-12-11 15:32:10
+ * @Last Modified time: 2022-05-25 11:01:42
  */
 
 export default {
+    /**
+     * 类型判断
+     * 
+     * @param value 值
+     * @param type 判断类型
+     * @return {Boolean}
+     */
+    mixin_typeof(value, type) {
+        if (['number', 'num', 'n'].includes(type.toLocaleLowerCase())) {
+            return typeof value === 'number';
+        } else if (['string', 'str', 's'].includes(type.toLocaleLowerCase())) {
+            return typeof value === 'string';
+        } else if (['boolean', 'b'].includes(type.toLocaleLowerCase())) {
+            return typeof value === 'boolean';
+        } else if (['symbol'].includes(type.toLocaleLowerCase())) {
+            return typeof value === 'symbol';
+        } else if (['undefined', 'u'].includes(type.toLocaleLowerCase())) {
+            return typeof value === 'undefined';
+        } else if (['null'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Null]';
+        } else if (['object', 'o'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString(value) === '[object Object]';
+        } else if (['array', 'a'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Array]';
+        } else if (['function', 'fun', 'f'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Function]';
+        } else if (['date', 'd'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Date]';
+        } else if (['regexp', 'reg'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object RegExp]';
+        } else if (['map', 'm'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Map]';
+        } else if (['set'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Set]';
+        } else if (['error', 'err', 'e'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Error]';
+        } else if (['math'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object Math]';
+        } else if (['weakmap'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object WeakMap]';
+        } else if (['weakset'].includes(type.toLocaleLowerCase())) {
+            return Object.prototype.toString.call(value) === '[object WeakSet]';
+        } else if (['nan'].includes(type.toLocaleLowerCase())) {
+            return Number.isNaN(value)
+        }
+    },
     /**
      * 是否为字符串
      * 
