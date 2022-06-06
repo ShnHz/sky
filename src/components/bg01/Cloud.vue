@@ -20,9 +20,9 @@ export default defineComponent({
         return {
             visible,
 
-            imgC1: 'url(../../../static/img/cloud/clouds-back.png) no-repeat bottom center',
-            imgC2: 'url(../../../static/img/cloud/clouds-mid.png) no-repeat bottom center',
-            imgC3: 'url(../../../static/img/cloud/clouds-fore.png) no-repeat bottom center',
+            imgC1: 'url(@/../static/img/cloud/clouds-back.png) no-repeat bottom center',
+            imgC2: 'url(@/../static/img/cloud/clouds-mid.png) no-repeat bottom center',
+            imgC3: 'url(@/../static/img/cloud/clouds-fore.png) no-repeat bottom center',
 
         }
     },

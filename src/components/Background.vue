@@ -51,7 +51,7 @@ export default defineComponent({
 
       imgB1tile: 'url(@/../static/img/bg/b1-tile.jpg)',
       imgB1Bg: 'url(@/../static/img/bg/b1.jpg)',
-      imgEarth: 'url(../../../static/img/earth.png) repeat-x top center',
+      imgEarth: 'url(@/../static/img/earth.png) repeat-x top center',
     }
   },
 })
