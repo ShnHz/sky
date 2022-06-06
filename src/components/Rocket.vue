@@ -1,6 +1,6 @@
 <template>
   <div id="rocket"
-    :style="{ 'top': isIgnition ? '318px' : scrollTop < 10 ? '318px' : `${318 - ignitionDistance + scrollTop}px` }"
+    :style="{ 'background-image': `url(${imgRocket})`, 'top': isIgnition ? '318px' : scrollTop < 10 ? '318px' : `${318 - ignitionDistance + scrollTop}px` }"
     :class="{ 'is-ignition': isIgnition, 'is-flying': isFlying }">
     <div class="flame-wrap">
       <div id="flame-big" class="flame"></div>
@@ -32,7 +32,9 @@ export default defineComponent({
     return {
       ignitionDistance,
       isFlying,
-      isIgnition
+      isIgnition,
+
+      imgRocket: "@/../static/img/rocket/rocket.png"
     }
   },
 })
@@ -47,7 +49,7 @@ export default defineComponent({
   left: 50%;
   top: 318px;
   margin-left: -39px;
-  background-image: url('../../../static/img/rocket/rocket.png');
+  // background-image: url('../../../static/img/rocket/rocket.png');
 
   .flame-wrap {
     position: absolute;
