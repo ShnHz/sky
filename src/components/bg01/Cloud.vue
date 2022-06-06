@@ -1,8 +1,8 @@
 <template>
     <div class="clouds-wrap">
-        <div id="clouds-back" :class="{ 'is-visibled': visible }" class="clouds"></div>
-        <div id="clouds-mid" :class="{ 'is-visibled': visible }" class="clouds"></div>
-        <div id="clouds-fore" :class="{ 'is-visibled': visible }" class="clouds"></div>
+        <div id="clouds-back" :class="{ 'is-visibled': visible }" class="clouds" :style="{ 'background': imgC1 }"></div>
+        <div id="clouds-mid" :class="{ 'is-visibled': visible }" class="clouds" :style="{ 'background': imgC2 }"></div>
+        <div id="clouds-fore" :class="{ 'is-visibled': visible }" class="clouds" :style="{ 'background': imgC3 }"></div>
     </div>
 </template>
 <script lang="ts">
@@ -18,7 +18,12 @@ export default defineComponent({
         })
 
         return {
-            visible
+            visible,
+
+            imgC1: 'url(../../../static/img/cloud/clouds-back.png) no-repeat bottom center',
+            imgC2: 'url(../../../static/img/cloud/clouds-mid.png) no-repeat bottom center',
+            imgC3: 'url(../../../static/img/cloud/clouds-fore.png) no-repeat bottom center',
+
         }
     },
 })
@@ -53,7 +58,6 @@ export default defineComponent({
     }
 
     #clouds-back {
-        background: url(../../../static/img/cloud/clouds-back.png) no-repeat bottom center;
         height: 180px;
         top: 1160px;
         margin-top: 100px;
@@ -62,7 +66,6 @@ export default defineComponent({
     }
 
     #clouds-mid {
-        background: url(../../../static/img/cloud/clouds-mid.png) no-repeat bottom center;
         height: 200px;
         top: 1160px;
         margin-top: 120px;
@@ -70,7 +73,6 @@ export default defineComponent({
     }
 
     #clouds-fore {
-        background: url(../../../static/img/cloud/clouds-fore.png) no-repeat bottom center;
         height: 180px;
         top: 1160px;
         margin-top: 140px;

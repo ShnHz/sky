@@ -1,7 +1,7 @@
 <template>
-  <div class="section-one-container section-one">
-    <section>
-      <div id="earth-container" class="earth-container"></div>
+  <div class="section-one-container section-one" :style="{ 'background-image': imgB1tile }">
+    <section :style="{ 'background-image': imgB1Bg }">
+      <div id="earth-container" class="earth-container" :style="{ 'background': imgEarth }"></div>
       <Cloud :scrollTop="scrollTop" />
     </section>
   </div>
@@ -46,7 +46,13 @@ export default defineComponent({
       return Math.round(props.scrollTop / 1000)
     })
 
-    return { flyHeight }
+    return {
+      flyHeight,
+
+      imgB1tile: 'url(@/../static/img/bg/b1-tile.jpg)',
+      imgB1Bg: 'url(@/../static/img/bg/b1.jpg)',
+      imgEarth: 'url(../../../static/img/earth.png) repeat-x top center',
+    }
   },
 })
 </script>
@@ -56,11 +62,9 @@ export default defineComponent({
 
   &.section-one {
     height: 10545px;
-    background-image: url('../../../static/img/bg/b1-tile.jpg');
 
     section {
       height: 10545px;
-      background-image: url('../../../static/img/bg/b1.jpg');
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -71,7 +75,6 @@ export default defineComponent({
     width: 100%;
     height: 499px;
     position: absolute;
-    background: url('../../../static/img/earth.png') repeat-x top center;
   }
 }
 

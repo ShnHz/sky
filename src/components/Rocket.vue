@@ -1,10 +1,10 @@
 <template>
   <div id="rocket"
-    :style="{ 'background-image': `url(${imgRocket})`, 'top': isIgnition ? '318px' : scrollTop < 10 ? '318px' : `${318 - ignitionDistance + scrollTop}px` }"
+    :style="{ 'background-image': imgRocket, 'top': isIgnition ? '318px' : scrollTop < 10 ? '318px' : `${318 - ignitionDistance + scrollTop}px` }"
     :class="{ 'is-ignition': isIgnition, 'is-flying': isFlying }">
     <div class="flame-wrap">
-      <div id="flame-big" class="flame"></div>
-      <div id="flame-small" class="flame"></div>
+      <div :style="{ 'background': imgFlame }" id="flame-big" class="flame"></div>
+      <div :style="{ 'background': imgFlame }" id="flame-small" class="flame"></div>
     </div>
   </div>
 </template>
@@ -34,7 +34,8 @@ export default defineComponent({
       isFlying,
       isIgnition,
 
-      imgRocket: "@/../static/img/rocket/rocket.png"
+      imgRocket: 'url(@/../static/img/rocket/rocket.png)',
+      imgFlame: 'url(@/../static/img/rocket/flame-sprite.png) no-repeat center center'
     }
   },
 })
@@ -49,7 +50,6 @@ export default defineComponent({
   left: 50%;
   top: 318px;
   margin-left: -39px;
-  // background-image: url('../../../static/img/rocket/rocket.png');
 
   .flame-wrap {
     position: absolute;
@@ -61,7 +61,6 @@ export default defineComponent({
       position: absolute;
       top: 0px;
       left: 0px;
-      background: url(../../../static/img/rocket/flame-sprite.png) no-repeat center center;
       height: 98px;
       width: 79px;
     }
