@@ -1,6 +1,5 @@
 <template>
-  <div id="rocket"
-    :style="{ 'background-image': imgRocket, 'top': isIgnition ? '318px' : scrollTop < 10 ? '318px' : `${318 - ignitionDistance + scrollTop}px` }"
+  <div id="rocket" :style="{ 'background-image': imgRocket, 'top': rocketTop + 'px' }"
     :class="{ 'is-ignition': isIgnition, 'is-flying': isFlying }">
     <div class="flame-wrap">
       <div :style="{ 'background': imgFlame }" id="flame-big" class="flame"></div>
@@ -28,11 +27,19 @@ export default defineComponent({
       //飞行状态
       return props.scrollTop > ignitionDistance.value
     })
+    const rocketTop = computed(() => {
+      //火箭位置
+      if (isIgnition.value) return 318 - props.scrollTop
+      if (props.scrollTop < 10) return 318
+
+      return 80 + (props.scrollTop / document.getElementById('app').clientHeight) * (document.body.clientHeight - 300)
+    })
 
     return {
       ignitionDistance,
       isFlying,
       isIgnition,
+      rocketTop,
 
       imgRocket: 'url(@/../static/img/rocket/rocket.png)',
       imgFlame: 'url(@/../static/img/rocket/flame-sprite.png) no-repeat center center'
@@ -46,7 +53,7 @@ export default defineComponent({
   z-index: 9999;
   width: 79px;
   height: 130px;
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 318px;
   margin-left: -39px;

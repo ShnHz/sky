@@ -9,6 +9,12 @@ const app = createApp(App)
 import '@css/result.scss'
 import 'nprogress/nprogress.css'
 
+// components
+import {
+    loadAllComponents
+} from '@/components/components'
+loadAllComponents(app)
+
 // config
 app.config.globalProperties.$window = window
 app.config.globalProperties.$document = document

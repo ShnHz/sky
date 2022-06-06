@@ -6,6 +6,11 @@
       <Plane :scrollTop="scrollTop" />
     </section>
   </div>
+
+  <div class="section-one-container section-two" :style="{ 'background-image': imgB2tile }">
+    <section :style="{ 'background-image': imgB2Bg }">
+    </section>
+  </div>
   <div class="altitude-wrap">
     <p>
       滚动高度：{{ scrollTop }} px
@@ -45,6 +50,12 @@ export default defineComponent({
         return Math.round(props.scrollTop * 6.54 / 1000)
       } else if (props.scrollTop <= 1560) {
         return Math.round(props.scrollTop * 7.05 / 1000)
+      } else if (props.scrollTop <= 1808) {
+        return Math.round(props.scrollTop * 6.64 / 1000)
+      } else if (props.scrollTop <= 5508) {
+        return Math.round(props.scrollTop * 10 / 1000)
+      } else if (props.scrollTop <= 9508) {
+        return Math.round(props.scrollTop * 8.94 / 1000)
       }
 
       return Math.round(props.scrollTop / 1000)
@@ -56,6 +67,9 @@ export default defineComponent({
       imgB1tile: 'url(@/../static/img/bg/b1-tile.jpg)',
       imgB1Bg: 'url(@/../static/img/bg/b1.jpg)',
       imgEarth: 'url(@/../static/img/bg/earth.png) repeat-x top center',
+
+      imgB2tile: 'url(@/../static/img/bg/b2-tile.jpg)',
+      imgB2Bg: 'url(@/../static/img/bg/b2.jpg)',
     }
   },
 })
@@ -74,6 +88,16 @@ export default defineComponent({
     }
   }
 
+  &.section-two {
+    height: 9000px;
+
+    section {
+      height: 9000px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
   .earth-container {
     z-index: 9998;
     width: 100%;
@@ -84,7 +108,7 @@ export default defineComponent({
 
 .altitude-wrap {
   position: fixed;
-  bottom: 100px;
+  bottom: 50px;
   left: 50%;
   padding: 4px 12px;
   color: #fff;

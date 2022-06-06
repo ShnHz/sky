@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2022-06-06 11:43:42 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-06-06 15:32:50
+ * @Last Modified time: 2022-06-06 18:19:21
  */
 
 <template >
@@ -21,7 +21,7 @@ import HeightRuler from '@/components/HeightRuler.vue'
 export default defineComponent({
   components: { Background, Rocket, HeightRuler },
   setup(props, context) {
-    let scrollTop = ref<Number>(0)
+    let scrollTop = ref(0)
     window.addEventListener(
       'scroll',
       (e) => {
@@ -39,6 +39,6 @@ export default defineComponent({
 <style scoped lang="scss">
 .index-wrap {
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 </style>
