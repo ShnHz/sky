@@ -1,5 +1,4 @@
 <template>
-    <div class="track"></div>
     <div class="height-ruler-wrap">
         <div v-for="(item, index) in list" :key="`ruler-item-${index}`"
             class="ruler-item wow animate__animated animate__fadeInLeft" :style="{ top: item.scrollTop - 100 + 'px' }">

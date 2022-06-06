@@ -3,6 +3,7 @@
     <section :style="{ 'background-image': imgB1Bg }">
       <div id="earth-container" class="earth-container" :style="{ 'background': imgEarth }"></div>
       <Cloud :scrollTop="scrollTop" />
+      <Plane :scrollTop="scrollTop" />
     </section>
   </div>
   <div class="altitude-wrap">
@@ -18,11 +19,14 @@
 <script lang="ts">
 import { ref, defineComponent, onMounted, computed } from 'vue'
 import WOW from 'wow.js'
+
 import Cloud from '@/components/bg01/Cloud.vue'
+import Plane from '@/components/bg01/Plane.vue'
 
 export default defineComponent({
   components: {
-    Cloud
+    Cloud,
+    Plane
   },
   props: {
     scrollTop: Number,
@@ -51,7 +55,7 @@ export default defineComponent({
 
       imgB1tile: 'url(@/../static/img/bg/b1-tile.jpg)',
       imgB1Bg: 'url(@/../static/img/bg/b1.jpg)',
-      imgEarth: 'url(@/../static/img/earth.png) repeat-x top center',
+      imgEarth: 'url(@/../static/img/bg/earth.png) repeat-x top center',
     }
   },
 })
