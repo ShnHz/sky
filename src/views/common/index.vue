@@ -1,31 +1,44 @@
 /*
  * @Author: sanghangning 
- * @Date: 2022-01-17 18:52:44 
+ * @Date: 2022-06-06 11:43:42 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-05-12 10:34:35
+ * @Last Modified time: 2022-06-06 15:10:22
  */
+
 <template >
   <div class="index-wrap">
-    <NoPermisssions />
+    <Background :scrollTop="scrollTop" />
+    <Rocket :scrollTop="scrollTop" />
+    <HeightRuler :scrollTop="scrollTop" />
   </div>
 </template>
-<script>
-export default {
-  name: 'index',
-  data() {
-    return {}
+<script lang="ts">
+import { ref, defineComponent } from 'vue'
+import Background from '@/components/Background.vue'
+import Rocket from '@/components/Rocket.vue'
+import HeightRuler from '@/components/HeightRuler.vue'
+
+export default defineComponent({
+  components: { Background, Rocket, HeightRuler },
+  setup(props, context) {
+    let scrollTop = ref<Number>(0)
+    window.addEventListener(
+      'scroll',
+      (e) => {
+        scrollTop.value = document.documentElement.scrollTop
+      },
+      false
+    )
+
+    return {
+      scrollTop,
+    }
   },
-  computed: {},
-  mounted() {},
-  methods: {},
-}
+})
 </script>
 <style scoped lang="scss">
 .index-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 </style>

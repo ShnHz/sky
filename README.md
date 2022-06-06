@@ -1,8 +1,8 @@
-# vue-admin
+# sky
 </br>
 </br>
 
-[在线预览](https://shnhz.github.io/vue-admin)
+[在线预览](https://shnhz.github.io/sky)
 
 ## 上手指南
 以下指南将帮助你在本地机器上安装和运行该项目，进行开发和测试。
@@ -17,30 +17,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-### 创建业务模板相关文件
-```
-npm run create:template
-```
-
-
-## 目录结构
-```
-├── README.md                   // 说明文件
-├── vite.config.js              // vite配置文件                
-├── src
-│   ├── api                     // api管理
-│   ├── assets                  // 静态文件       
-│   ├── components              // vue组件           
-│   ├── plugins                 // vue插件          
-│   ├── router                  // 路由文件        
-│   ├── store                   // vuex      
-│   ├── utils                   // 工具类/mixins     
-│   ├── views                   // 页面
-│   ├── App.vue                 // vue入口
-│   ├── main.js   
-├── public                      // 静态文件（图片、ico等）
-├── index.html                  // vue3 html 主页入口
 ```
 
 ## git 提交模板

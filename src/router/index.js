@@ -3,14 +3,12 @@ import {
   createWebHistory
 } from 'vue-router'
 import common from './routers/common'
-import template from './routers/template'
 
 import NProgress from 'nprogress'
 
 
 let routes = [
   ...common,
-  ...template
 ]
 
 routes = checkPermissions(routes)
