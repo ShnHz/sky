@@ -19,11 +19,21 @@
             class="ruler-item wow animate__animated animate__fadeInLeft" :style="{ top: item.scrollTop - 100 + 'px' }">
             <h3>{{ item.name }}</h3>
             <p>{{ item.height }}</p>
+            <p class="annotation-wrap" v-if="item.annotation">{{ item.annotation }}</p>
+        </div>
+
+        <div class="altitude-wrap">
+            <p>
+                滚动高度：{{ scrollTop }} px
+            </p>
+            <p>
+                飞行高度：{{ flyHeight }} km
+            </p>
         </div>
     </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent, onMounted, computed } from 'vue'
 import WOW from 'wow.js'
 
 export default defineComponent({
@@ -34,7 +44,35 @@ export default defineComponent({
         onMounted(() => {
             new WOW({ animateClass: 'animate__animated' }).init()
         })
+
+        const flyHeight = computed(() => {
+            //飞行高度
+            if (props.scrollTop <= 1160) {
+                return Math.round(props.scrollTop * 5.25 / 1000)
+            } else if (props.scrollTop <= 1360) {
+                return Math.round(props.scrollTop * 6.54 / 1000)
+            } else if (props.scrollTop <= 1560) {
+                return Math.round(props.scrollTop * 7.05 / 1000)
+            } else if (props.scrollTop <= 1808) {
+                return Math.round(props.scrollTop * 6.64 / 1000)
+            } else if (props.scrollTop <= 2730) {
+                return Math.round(props.scrollTop * 8.05 / 1000)
+            } else if (props.scrollTop <= 2930) {
+                return Math.round(props.scrollTop * 7.85 / 1000)
+            } else if (props.scrollTop <= 3130) {
+                return Math.round(props.scrollTop * 7.67 / 1000)
+            } else if (props.scrollTop <= 5508) {
+                return Math.round(props.scrollTop * 10 / 1000)
+            } else if (props.scrollTop <= 9508) {
+                return Math.round(props.scrollTop * 8.94 / 1000)
+            }
+
+            return Math.round(props.scrollTop / 1000)
+        })
+
         return {
+            flyHeight,
+
             atmosphereList: [
                 {
                     scrollTop: 1592,
@@ -81,6 +119,24 @@ export default defineComponent({
                     height: '11000米',
                     scrollTop: 1560,
                     name: '飞机巡航高度'
+                },
+                {
+                    height: '22000米',
+                    scrollTop: 2730,
+                    name: 'X-1试验机',
+                    annotation: '世界第一架超音速飞机达到过的高度'
+                },
+                {
+                    height: '23000米',
+                    scrollTop: 2930,
+                    name: '车里雅宾斯克陨石',
+                    annotation: '2013年一个直径18米的陨石在俄罗斯车里雅宾斯克州上空爆炸'
+                },
+                {
+                    height: '24000米',
+                    scrollTop: 3130,
+                    name: '乐高',
+                    annotation: '2012年两位加拿大少年将一个乐高小人发射升空'
                 }
             ]
         }
@@ -149,6 +205,32 @@ export default defineComponent({
         p {
             font-weight: 600;
             font-size: 16px;
+        }
+
+        .annotation-wrap {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
+
+.altitude-wrap {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    padding: 4px 12px;
+    color: #fff;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateX(-50%);
+    border-radius: 12px;
+}
+
+@media screen and (max-width: 390px) {
+    .height-ruler-wrap {
+        .ruler-item {
+            margin-left: -160px;
         }
     }
 }

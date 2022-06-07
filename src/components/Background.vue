@@ -4,20 +4,16 @@
       <div id="earth-container" class="earth-container" :style="{ 'background': imgEarth }"></div>
       <Cloud :scrollTop="scrollTop" />
       <Plane :scrollTop="scrollTop" />
+      <Planex1 :scrollTop="scrollTop" />
+      <Meteorite :scrollTop="scrollTop" />
+      <Legao :scrollTop="scrollTop" />
+
     </section>
   </div>
 
   <div class="section-one-container section-two" :style="{ 'background-image': imgB2tile }">
     <section :style="{ 'background-image': imgB2Bg }">
     </section>
-  </div>
-  <div class="altitude-wrap">
-    <p>
-      滚动高度：{{ scrollTop }} px
-    </p>
-    <p>
-      飞行高度：{{ flyHeight }} km
-    </p>
   </div>
 </template>
 
@@ -27,11 +23,17 @@ import WOW from 'wow.js'
 
 import Cloud from '@/components/bg01/Cloud.vue'
 import Plane from '@/components/bg01/Plane.vue'
+import Planex1 from '@/components/bg01/Planex1.vue'
+import Meteorite from '@/components/bg01/Meteorite.vue'
+import Legao from '@/components/bg01/Legao.vue'
 
 export default defineComponent({
   components: {
     Cloud,
-    Plane
+    Plane,
+    Planex1,
+    Meteorite,
+    Legao
   },
   props: {
     scrollTop: Number,
@@ -41,29 +43,7 @@ export default defineComponent({
       new WOW({ animateClass: 'animate__animated' }).init()
     })
 
-
-    const flyHeight = computed(() => {
-      //飞行高度
-      if (props.scrollTop <= 1160) {
-        return Math.round(props.scrollTop * 5.25 / 1000)
-      } else if (props.scrollTop <= 1360) {
-        return Math.round(props.scrollTop * 6.54 / 1000)
-      } else if (props.scrollTop <= 1560) {
-        return Math.round(props.scrollTop * 7.05 / 1000)
-      } else if (props.scrollTop <= 1808) {
-        return Math.round(props.scrollTop * 6.64 / 1000)
-      } else if (props.scrollTop <= 5508) {
-        return Math.round(props.scrollTop * 10 / 1000)
-      } else if (props.scrollTop <= 9508) {
-        return Math.round(props.scrollTop * 8.94 / 1000)
-      }
-
-      return Math.round(props.scrollTop / 1000)
-    })
-
     return {
-      flyHeight,
-
       imgB1tile: 'url(@/../static/img/bg/b1-tile.jpg)',
       imgB1Bg: 'url(@/../static/img/bg/b1.jpg)',
       imgEarth: 'url(@/../static/img/bg/earth.png) repeat-x top center',
@@ -104,17 +84,5 @@ export default defineComponent({
     height: 499px;
     position: absolute;
   }
-}
-
-.altitude-wrap {
-  position: fixed;
-  bottom: 50px;
-  left: 50%;
-  padding: 4px 12px;
-  color: #fff;
-  font-size: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  transform: translateX(-50%);
-  border-radius: 12px;
 }
 </style>
