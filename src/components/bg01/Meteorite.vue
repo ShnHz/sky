@@ -20,7 +20,7 @@ export default defineComponent({
     },
     setup(props, context) {
         const visible = computed(() => {
-            return props.scrollTop >= 2600 && props.scrollTop <= 3300
+            return props.scrollTop >= 2400 && props.scrollTop <= 3300
         })
 
         return {
@@ -76,7 +76,7 @@ export default defineComponent({
 
     &.is-visibled {
         .asteroid {
-            animation: asteroidAnimation 5s infinite;
+            animation: asteroidAnimation 8s infinite;
             animation-timing-function: ease-in;
             animation-delay: 1s;
         }

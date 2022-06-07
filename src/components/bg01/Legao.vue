@@ -1,6 +1,6 @@
 <template>
     <div class="legao-wrap" :class="{ 'is-visibled': visible }">
-        <div :style="{ 'background-image': imgPlane }"></div>
+        <div :style="{ 'background-image': img }"></div>
     </div>
 </template>
 <script lang="ts">
@@ -18,7 +18,7 @@ export default defineComponent({
         return {
             visible,
 
-            imgPlane: 'url(@/../static/img/bg/icon-sprite1.1.png)',
+            img: 'url(@/../static/img/bg/icon-sprite1.1.png)',
         }
     },
 })

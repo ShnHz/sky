@@ -32,7 +32,7 @@ export default defineComponent({
 .clouds-wrap {
 
     .clouds {
-        z-index: 9999;
+        z-index: 9998;
         width: 976px;
         left: 50%;
         position: absolute;

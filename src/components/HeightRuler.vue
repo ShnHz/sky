@@ -61,8 +61,20 @@ export default defineComponent({
                 return Math.round(props.scrollTop * 7.85 / 1000)
             } else if (props.scrollTop <= 3130) {
                 return Math.round(props.scrollTop * 7.67 / 1000)
+            } else if (props.scrollTop <= 3330) {
+                return Math.round(props.scrollTop * 8.10 / 1000)
+            } else if (props.scrollTop <= 4442) {
+                return Math.round(props.scrollTop * 8.10 / 1000)
+            } else if (props.scrollTop <= 4642) {
+                return Math.round(props.scrollTop * 8.83 / 1000)
             } else if (props.scrollTop <= 5508) {
                 return Math.round(props.scrollTop * 10 / 1000)
+            } else if (props.scrollTop <= 5848) {
+                return Math.round(props.scrollTop * 9.06 / 1000)
+            } else if (props.scrollTop <= 7048) {
+                return Math.round(props.scrollTop * 9.22 / 1000)
+            } else if (props.scrollTop <= 8545) {
+                return Math.round(props.scrollTop * 9.36 / 1000)
             } else if (props.scrollTop <= 9508) {
                 return Math.round(props.scrollTop * 8.94 / 1000)
             }
@@ -137,7 +149,39 @@ export default defineComponent({
                     scrollTop: 3130,
                     name: '乐高',
                     annotation: '2012年两位加拿大少年将一个乐高小人发射升空'
-                }
+                },
+                {
+                    height: '27000米',
+                    scrollTop: 3330,
+                    name: '气象探测气球高度',
+                },
+                {
+                    height: '39000米',
+                    scrollTop: 4442,
+                    name: '高空跳伞记录',
+                    annotation: '2012年菲利克斯·鲍加特纳创造了世界高空跳伞记录'
+                },
+                {
+                    height: '41000米',
+                    scrollTop: 4642,
+                    name: '自然生物圈边界',
+                    annotation: '有低等细菌和微生物在此高度上存活'
+                },
+                {
+                    height: '53000米',
+                    scrollTop: 5848,
+                    name: '无人气球最高记录',
+                },
+                {
+                    height: '65000米',
+                    scrollTop: 7048,
+                    name: '陨石摩擦发光',
+                    annotation: '只有少数较大陨石可以到达地球表面'
+                }, {
+                    height: '80000米',
+                    scrollTop: 8545,
+                    name: '极光的最低高度',
+                },
             ]
         }
     },

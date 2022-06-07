@@ -7,7 +7,10 @@
       <Planex1 :scrollTop="scrollTop" />
       <Meteorite :scrollTop="scrollTop" />
       <Legao :scrollTop="scrollTop" />
-
+      <MeteorologicalBalloon :scrollTop="scrollTop" />
+      <Parachuting :scrollTop="scrollTop" />
+      <Biological :scrollTop="scrollTop" />
+      <Aurora :scrollTop="scrollTop" />
     </section>
   </div>
 
@@ -26,6 +29,10 @@ import Plane from '@/components/bg01/Plane.vue'
 import Planex1 from '@/components/bg01/Planex1.vue'
 import Meteorite from '@/components/bg01/Meteorite.vue'
 import Legao from '@/components/bg01/Legao.vue'
+import MeteorologicalBalloon from '@/components/bg01/MeteorologicalBalloon.vue'
+import Parachuting from '@/components/bg01/Parachuting.vue'
+import Biological from '@/components/bg01/Biological.vue'
+import Aurora from '@/components/bg01/Aurora.vue'
 
 export default defineComponent({
   components: {
@@ -33,7 +40,11 @@ export default defineComponent({
     Plane,
     Planex1,
     Meteorite,
-    Legao
+    Legao,
+    MeteorologicalBalloon,
+    Parachuting,
+    Biological,
+    Aurora
   },
   props: {
     scrollTop: Number,
