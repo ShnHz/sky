@@ -13,6 +13,8 @@
       <Parachuting :scrollTop="scrollTop" />
       <Biological :scrollTop="scrollTop" />
       <Aurora :scrollTop="scrollTop" />
+      <NoOneBalloon :scrollTop="scrollTop" />
+      <Meteorites :scrollTop="scrollTop" />
     </section>
   </div>
 
@@ -35,6 +37,8 @@ import MeteorologicalBalloon from '@/components/bg01/MeteorologicalBalloon.vue'
 import Parachuting from '@/components/bg01/Parachuting.vue'
 import Biological from '@/components/bg01/Biological.vue'
 import Aurora from '@/components/bg01/Aurora.vue'
+import NoOneBalloon from '@/components/bg01/NoOneBalloon.vue'
+import Meteorites from '@/components/bg01/Meteorites.vue'
 
 export default defineComponent({
   components: {
@@ -46,7 +50,9 @@ export default defineComponent({
     MeteorologicalBalloon,
     Parachuting,
     Biological,
-    Aurora
+    Aurora,
+    NoOneBalloon,
+    Meteorites
   },
   props: {
     scrollTop: Number,
