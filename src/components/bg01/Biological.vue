@@ -45,4 +45,10 @@ export default defineComponent({
         background-position: 0px -105px;
     }
 }
+
+@media screen and (max-width: 390px) {
+    .biological-wrap {
+        margin-left: 80px;
+    }
+}
 </style>

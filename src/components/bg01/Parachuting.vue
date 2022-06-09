@@ -68,4 +68,10 @@ export default defineComponent({
         transform: translateX(1px)
     }
 }
+
+@media screen and (max-width: 390px) {
+    .parachuting-wrap {
+        margin-left: 50px;
+    }
+}
 </style>

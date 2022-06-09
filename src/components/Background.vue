@@ -2,6 +2,8 @@
   <div class="section-one-container section-one" :style="{ 'background-image': imgB1tile }">
     <section :style="{ 'background-image': imgB1Bg }">
       <div id="earth-container" class="earth-container" :style="{ 'background': imgEarth }"></div>
+      <div id="stars-container" class="stars-container" :style="{ 'background': imgStars }"></div>
+
       <Cloud :scrollTop="scrollTop" />
       <Plane :scrollTop="scrollTop" />
       <Planex1 :scrollTop="scrollTop" />
@@ -58,6 +60,7 @@ export default defineComponent({
       imgB1tile: 'url(@/../static/img/bg/b1-tile.jpg)',
       imgB1Bg: 'url(@/../static/img/bg/b1.jpg)',
       imgEarth: 'url(@/../static/img/bg/earth.png) repeat-x top center',
+      imgStars: 'url(@/../static/img/bg/stars.png) center center',
 
       imgB2tile: 'url(@/../static/img/bg/b2-tile.jpg)',
       imgB2Bg: 'url(@/../static/img/bg/b2.jpg)',
@@ -94,6 +97,13 @@ export default defineComponent({
     width: 100%;
     height: 499px;
     position: absolute;
+  }
+
+  .stars-container {
+    height: 108000px;
+    width: 100%;
+    position: absolute;
+    top: 5000px;
   }
 }
 </style>

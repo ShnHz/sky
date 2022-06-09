@@ -80,4 +80,24 @@ export default defineComponent({
         transition: all 1.2s ease-in-out;
     }
 }
+
+@media screen and (max-width: 390px) {
+    .aurora-wrap {
+        .aurora.is-visibled {
+            opacity: 1;
+
+            &#aurora-back {
+                transform: scale(1);
+            }
+
+            &#aurora-mid {
+                transform: scale(1);
+            }
+
+            &#aurora-fore {
+                transform: scale(1);
+            }
+        }
+    }
+}
 </style>
