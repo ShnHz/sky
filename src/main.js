@@ -18,6 +18,7 @@ loadAllComponents(app)
 // config
 app.config.globalProperties.$window = window
 app.config.globalProperties.$document = document
+
 window.$vueApp = app
 
 // plugins  

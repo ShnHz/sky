@@ -2,7 +2,7 @@
  * @Author: sanghangning 
  * @Date: 2022-06-06 11:43:42 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-06-09 14:04:03
+ * @Last Modified time: 2022-06-09 18:21:41
  */
 
 <template >
@@ -10,7 +10,7 @@
     <Loading />
     <Background :scrollTop="scrollTop" />
     <Rocket :scrollTop="scrollTop" />
-    <HeightRuler :scrollTop="scrollTop" />
+    <!-- <HeightRuler :scrollTop="scrollTop" /> -->
   </div>
 </template>
 <script lang="ts">
@@ -41,6 +41,7 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .index-wrap {
+  height: 18608px;
   position: relative;
   overflow: hidden;
 }

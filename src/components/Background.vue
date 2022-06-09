@@ -1,10 +1,17 @@
 <template>
-  <div class="section-one-container section-one" :style="{ 'background-image': imgB1tile }">
-    <section :style="{ 'background-image': imgB1Bg }">
+  <div class="background-wrap">
+    <div class="section-container section-two" :style="{ 'background-image': imgB2tile }">
+      <section :style="{ 'background-image': imgB2Bg }">
+      </section>
+    </div>
+
+    <div class="section-container section-one" :style="{ 'background-image': imgB1tile }">
+      <section :style="{ 'background-image': imgB1Bg }">
+      </section>
       <div id="earth-container" class="earth-container" :style="{ 'background': imgEarth }"></div>
       <div id="stars-container" class="stars-container" :style="{ 'background': imgStars }"></div>
 
-      <Cloud :scrollTop="scrollTop" />
+      <!-- <Cloud :scrollTop="scrollTop" />
       <Plane :scrollTop="scrollTop" />
       <Planex1 :scrollTop="scrollTop" />
       <Meteorite :scrollTop="scrollTop" />
@@ -14,13 +21,8 @@
       <Biological :scrollTop="scrollTop" />
       <Aurora :scrollTop="scrollTop" />
       <NoOneBalloon :scrollTop="scrollTop" />
-      <Meteorites :scrollTop="scrollTop" />
-    </section>
-  </div>
-
-  <div class="section-one-container section-two" :style="{ 'background-image': imgB2tile }">
-    <section :style="{ 'background-image': imgB2Bg }">
-    </section>
+      <Meteorites :scrollTop="scrollTop" /> -->
+    </div>
   </div>
 </template>
 
@@ -76,26 +78,22 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.section-one-container {
+.background-wrap {}
+
+.section-container {
+  section {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(180deg);
+  }
 
   &.section-one {
     height: 10545px;
-
-    section {
-      height: 10545px;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
   }
 
   &.section-two {
     height: 9000px;
-
-    section {
-      height: 9000px;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
   }
 
   .earth-container {
@@ -103,13 +101,16 @@ export default defineComponent({
     width: 100%;
     height: 499px;
     position: absolute;
+    bottom: 0;
+    transform: rotate(180deg);
+
   }
 
   .stars-container {
     height: 108000px;
     width: 100%;
     position: absolute;
-    top: 5000px;
+    top: calc(100vh - 5000px);
   }
 }
 </style>

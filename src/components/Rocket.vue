@@ -1,5 +1,5 @@
 <template>
-  <div id="rocket" :style="{ 'background-image': imgRocket, 'top': rocketTop + 'px' }"
+  <div id="rocket" :style="{ 'background-image': imgRocket, 'bottom': `${rocketBottom}px` }"
     :class="{ 'is-ignition': isIgnition, 'is-flying': isFlying }">
     <div class="flame-wrap">
       <div :style="{ 'background': imgFlame }" id="flame-big" class="flame"></div>
@@ -16,30 +16,34 @@ export default defineComponent({
     scrollTop: Number,
   },
   setup(props, context) {
+    const bottom = computed(() => {
+      return document.documentElement.scrollHeight - props.scrollTop - 937
+    })
+
     // 点火距离
     const ignitionDistance = ref(250)
 
     const isIgnition = computed(() => {
       //点火状态
-      return props.scrollTop >= 10 && props.scrollTop <= ignitionDistance.value
+      return bottom.value >= 10 && bottom.value <= ignitionDistance.value
     })
     const isFlying = computed(() => {
       //飞行状态
-      return props.scrollTop > ignitionDistance.value
+      return bottom.value > ignitionDistance.value
     })
-    const rocketTop = computed(() => {
+    const rocketBottom = computed(() => {
       //火箭位置
-      if (isIgnition.value) return 318 - props.scrollTop
-      if (props.scrollTop < 10) return 318
+      if (isIgnition.value) return 318 - bottom.value
+      if (bottom.value < 10) return 318
 
-      return 80 + (props.scrollTop / document.getElementById('app').clientHeight) * (document.body.clientHeight - 300)
+      return 80 + (bottom.value / document.getElementById('app').clientHeight) * (document.body.clientHeight - 300)
     })
 
     return {
       ignitionDistance,
       isFlying,
       isIgnition,
-      rocketTop,
+      rocketBottom,
 
       imgRocket: 'url(@/../static/img/rocket/rocket.png)',
       imgFlame: 'url(@/../static/img/rocket/flame-sprite.png) no-repeat center center'
@@ -55,8 +59,9 @@ export default defineComponent({
   height: 130px;
   position: fixed;
   left: 50%;
-  top: 318px;
+  bottom: 318px;
   margin-left: -39px;
+  transform: rotate(180deg);
 
   .flame-wrap {
     position: absolute;
@@ -102,7 +107,7 @@ export default defineComponent({
 
   0%,
   100% {
-    transform: translateX(0)
+    transform: translateX(0) rotate(180deg);
   }
 
   10%,
@@ -110,14 +115,14 @@ export default defineComponent({
   50%,
   70%,
   90% {
-    transform: translateX(-2px)
+    transform: translateX(-2px) rotate(180deg);
   }
 
   20%,
   40%,
   60%,
   80% {
-    transform: translateX(2px)
+    transform: translateX(2px) rotate(180deg);
   }
 }
 
@@ -125,7 +130,7 @@ export default defineComponent({
 
   0%,
   100% {
-    transform: translateX(0)
+    transform: translateX(0) rotate(180deg);
   }
 
   10%,
@@ -133,14 +138,14 @@ export default defineComponent({
   50%,
   70%,
   90% {
-    transform: translateX(-1px)
+    transform: translateX(-1px) rotate(180deg);
   }
 
   20%,
   40%,
   60%,
   80% {
-    transform: translateX(1px)
+    transform: translateX(1px) rotate(180deg);
   }
 }
 
