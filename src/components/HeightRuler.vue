@@ -23,6 +23,7 @@
             <p class="annotation-wrap" v-if="item.annotation">{{ item.annotation }}</p>
         </div>
 
+        <!-- 高度表 -->
         <div class="altitude-wrap">
             <p>
                 滚动高度：{{ flyPx }} px
@@ -31,18 +32,31 @@
                 飞行高度：{{ flyHeight }} km
             </p>
         </div>
+
+        <!-- 自动发射按钮 -->
+        <RocketLaunch @click="autoFlyStart" :class="{ 'animate__animated animate__fadeOutDown': flyPx >= 200 }" />
     </div>
 </template>
 <script lang="ts">
 import { ref, defineComponent, onMounted, computed } from 'vue'
 import WOW from 'wow.js'
 
+import RocketLaunch from '@/components/other/RocketLaunch.vue'
+
 export default defineComponent({
+    components: {
+        RocketLaunch
+    },
     props: {
         scrollTop: Number,
         flyPx: Number
     },
     setup(props, context) {
+        onMounted(() => {
+            new WOW({ animateClass: 'animate__animated' }).init()
+        })
+
+        // 飞行高度
         const atmosphereList = [
             {
                 scrollTop: 1592,
@@ -79,7 +93,6 @@ export default defineComponent({
                 height: '2000000米'
             },
         ]
-
         const list = [
             {
                 height: '6100米',
@@ -147,10 +160,6 @@ export default defineComponent({
                 name: '极光的最低高度',
             },
         ]
-        onMounted(() => {
-            new WOW({ animateClass: 'animate__animated' }).init()
-        })
-
         const flyHeight = computed(() => {
             let rocketBottom = (document.getElementById('rocket') ? parseInt(document.getElementById('rocket').style.bottom) : 0) + 130
             let heightList = [...atmosphereList, ...list].sort((a, b) => a.scrollTop - b.scrollTop)
@@ -165,11 +174,29 @@ export default defineComponent({
             return Math.round(props.flyPx / 1000)
         })
 
+
+        // 自动飞行
+        window.addEventListener(
+            'mousewheel',
+            (e) => {
+                clearInterval(autoFlyTimer)
+            },
+            false
+        )
+        let autoFlyTimer = null
+        const autoFlyStart = (() => {
+            autoFlyTimer = setInterval(() => {
+                document.documentElement.scrollTop = document.documentElement.scrollTop - 1
+            }, 5)
+        })
+
         return {
             flyHeight,
 
             atmosphereList,
-            list
+            list,
+
+            autoFlyStart
         }
     },
 })
@@ -256,6 +283,14 @@ export default defineComponent({
     background: rgba(0, 0, 0, 0.6);
     transform: translateX(-50%);
     border-radius: 12px;
+}
+
+::v-deep .rocker-launch {
+    z-index: 9999;
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    margin-left: -80px;
 }
 
 @media screen and (max-width: 390px) {

@@ -47,34 +47,40 @@ export default defineComponent({
         let isVisibled = ref(true)
 
         onBeforeMount(() => {
-            let count = 0;
-            let imgs = [
-                '@/../static/img/bg/b1-tile.jpg',
-                '@/../static/img/bg/b1.jpg',
-                '@/../static/img/bg/earth.png',
-                '@/../static/img/rocket/rocket.png',
-                '@/../static/img/rocket/flame-sprite.png',
-                '@/../static/img/bg/icon-sprite1.1.png',
-                '@/../static/img/cloud/clouds-back.png',
-                '@/../static/img/cloud/clouds-mid.png',
-                '@/../static/img/cloud/clouds-fore.png',
-                '@/../static/img/aurora/borealis-back.png',
-                '@/../static/img/aurora/borealis-mid.png',
-                '@/../static/img/aurora/borealis-fore.png',
-            ]
-            for (let img of imgs) {
-                let image = new Image();
-                image.onload = () => {
-                    count++;
-                    percent.value = Math.floor(count / imgs.length * 100);
-                    if (percent.value == 100) {
-                        setTimeout(() => {
-                            isVisibled.value = false
-                        }, 1000);
-                    }
-                };
-                image.src = img;
-            }
+            setTimeout(() => {
+                let count = 0;
+                let imgs = [
+                    '@/../static/img/bg/b1-tile.jpg',
+                    '@/../static/img/bg/b1.jpg',
+                    '@/../static/img/bg/b2-tile.jpg',
+                    '@/../static/img/bg/b2.jpg',
+
+                    '@/../static/img/bg/earth.png',
+                    '@/../static/img/rocket/rocket.png',
+                    '@/../static/img/rocket/flame-sprite.png',
+                    '@/../static/img/bg/icon-sprite1.1.png',
+                    '@/../static/img/cloud/clouds-back.png',
+                    '@/../static/img/cloud/clouds-mid.png',
+                    '@/../static/img/cloud/clouds-fore.png',
+                    '@/../static/img/aurora/borealis-back.png',
+                    '@/../static/img/aurora/borealis-mid.png',
+                    '@/../static/img/aurora/borealis-fore.png',
+                ]
+                for (let img of imgs) {
+                    let image = new Image();
+                    image.onload = () => {
+                        count++;
+                        percent.value = Math.floor(count / imgs.length * 100);
+                        if (percent.value == 100) {
+                            setTimeout(() => {
+                                isVisibled.value = false
+                            }, 1000);
+                        }
+                    };
+                    image.src = img;
+                }
+            }, 1000)
+
         })
 
         return {
