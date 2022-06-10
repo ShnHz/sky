@@ -187,19 +187,27 @@ export default defineComponent({
         let autoFlyTimer = null
         let speed = 20
         let timed = 0
+        const reSpeed = ((speed) => {
+            clearInterval(autoFlyTimer)
+            autoFlyTimer = setInterval(() => {
+
+                if (document.documentElement.scrollTop <= 0) {
+                    clearInterval(autoFlyTimer)
+                    timed = 0
+                }
+                document.documentElement.scrollTop = document.documentElement.scrollTop - 1
+                timed += speed
+
+                if (speed >= 5) {
+                    reSpeed(speed - 0.1)
+                }
+            }, speed)
+        })
+
         const autoFlyStart = (() => {
             autoFlyTimer = setInterval(() => {
-                if (timed == 5200) {
-                    clearInterval(autoFlyTimer)
-                    speed = 8
-                    autoFlyTimer = setInterval(() => {
-                        if (document.documentElement.scrollTop <= 0) {
-                            clearInterval(autoFlyTimer)
-                            timed = 0
-                        }
-                        document.documentElement.scrollTop = document.documentElement.scrollTop - 1
-                        timed += speed
-                    }, speed)
+                if (timed >= 5200) {
+                    reSpeed(20)
                 }
                 if (document.documentElement.scrollTop <= 0) {
                     clearInterval(autoFlyTimer)
