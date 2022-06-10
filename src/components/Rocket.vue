@@ -6,6 +6,15 @@
       <div :style="{ 'background': imgFlame }" id="flame-small" class="flame"></div>
     </div>
   </div>
+
+  <div class="smoke-wrap" :class="{ 'is-visibled': flyPx >= 220 }">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+  </div>
 </template>
 
 <script lang="ts">
@@ -14,6 +23,7 @@ import { ref, defineComponent, onMounted, computed } from 'vue'
 export default defineComponent({
   props: {
     scrollTop: Number,
+    flyPx: Number
   },
   setup(props, context) {
     const bottom = computed(() => {
@@ -202,6 +212,105 @@ export default defineComponent({
   100% {
     opacity: 0;
     top: 0;
+  }
+}
+
+
+.smoke-wrap {
+  z-index: 9999;
+  left: 50%;
+  bottom: 310px;
+  position: absolute;
+  --smoke: #{rgba(#f7f8ff, 0.9)};
+  transform: scale(3);
+
+  i {
+    opacity: 0;
+    transform: scale(0.7);
+    border-radius: 50%;
+    position: absolute;
+    bottom: var(--b, -20px);
+    left: var(--l, -12px);
+    width: var(--s, 32px);
+    height: var(--s, 32px);
+    background: var(--smoke);
+
+    &:nth-child(1) {
+      --s: 22px;
+      --b: -10px;
+    }
+
+    &:nth-child(2) {
+      --s: 20px;
+      --l: -24px;
+      --b: -10px;
+      --d: 50ms;
+    }
+
+    &:nth-child(3) {
+      --s: 22px;
+      --l: 0;
+      --b: -12px;
+      --d: 20ms;
+    }
+
+    &:nth-child(4) {
+      --s: 12px;
+      --l: 16px;
+      --b: -6px;
+      --d: 120ms;
+    }
+
+    &:nth-child(5) {
+      --s: 24px;
+      --l: -20px;
+      --b: -14px;
+      --d: 80ms;
+    }
+
+    &:nth-child(6) {
+      --s: 12px;
+      --l: -28px;
+      --b: -8px;
+      --d: 60ms;
+    }
+  }
+
+  &.is-visibled {
+    i {
+      animation: smoke 1.7s ease forwards calc(var(--d) + 600ms);
+
+      &:nth-child(3),
+      &:nth-child(6) {
+        animation: smoke-alt 1.7s ease forwards calc(var(--d) + 600ms);
+      }
+    }
+  }
+}
+
+@keyframes smoke {
+
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  55% {
+    transform: scale(0.92);
+  }
+}
+
+@keyframes smoke-alt {
+
+  20%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1.08);
   }
 }
 </style>
