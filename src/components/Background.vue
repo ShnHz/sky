@@ -1,27 +1,31 @@
 <template>
   <div class="background-wrap">
-    <div class="section-container section-two" :style="{ 'background-image': imgB2tile }">
+    <div class="section-container section-two">
+      <section :style="{ 'background-image': imgB2tile }">
+      </section>
       <section :style="{ 'background-image': imgB2Bg }">
       </section>
     </div>
 
-    <div class="section-container section-one" :style="{ 'background-image': imgB1tile }">
+    <div class="section-container section-one">
+      <section :style="{ 'background-image': imgB1tile }">
+      </section>
       <section :style="{ 'background-image': imgB1Bg }">
       </section>
       <div id="earth-container" class="earth-container" :style="{ 'background': imgEarth }"></div>
       <div id="stars-container" class="stars-container" :style="{ 'background': imgStars }"></div>
 
-      <!-- <Cloud :scrollTop="scrollTop" />
-      <Plane :scrollTop="scrollTop" />
-      <Planex1 :scrollTop="scrollTop" />
-      <Meteorite :scrollTop="scrollTop" />
-      <Legao :scrollTop="scrollTop" />
-      <MeteorologicalBalloon :scrollTop="scrollTop" />
-      <Parachuting :scrollTop="scrollTop" />
-      <Biological :scrollTop="scrollTop" />
-      <Aurora :scrollTop="scrollTop" />
-      <NoOneBalloon :scrollTop="scrollTop" />
-      <Meteorites :scrollTop="scrollTop" /> -->
+      <Cloud :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Plane :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Planex1 :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Meteorite :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Legao :scrollTop="scrollTop" :flyPx="flyPx" />
+      <MeteorologicalBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Parachuting :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Biological :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Aurora :scrollTop="scrollTop" :flyPx="flyPx" />
+      <NoOneBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
+      <Meteorites :scrollTop="scrollTop" :flyPx="flyPx" />
     </div>
   </div>
 </template>
@@ -58,6 +62,7 @@ export default defineComponent({
   },
   props: {
     scrollTop: Number,
+    flyPx: Number
   },
   setup(props, context) {
     onMounted(() => {
@@ -81,11 +86,20 @@ export default defineComponent({
 .background-wrap {}
 
 .section-container {
+  position: relative;
+
   section {
     height: 100%;
+    width: 100%;
+    position: absolute;
     background-repeat: no-repeat;
     background-position: center;
     transform: rotate(180deg);
+
+    &:first-child {
+      background-repeat: repeat;
+
+    }
   }
 
   &.section-one {
@@ -110,7 +124,7 @@ export default defineComponent({
     height: 108000px;
     width: 100%;
     position: absolute;
-    top: calc(100vh - 5000px);
+    bottom: 5000px;
   }
 }
 </style>

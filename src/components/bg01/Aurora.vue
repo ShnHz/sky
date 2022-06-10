@@ -11,10 +11,11 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         const visible = computed(() => {
-            return props.scrollTop >= 8000
+            return props.flyPx >= 7600
         })
 
         return {
@@ -61,21 +62,21 @@ export default defineComponent({
 
     #aurora-back {
         height: 450px;
-        top: 8545px;
+        bottom: 8245px;
         margin-top: 100px;
         transition: all 1s ease-in-out;
     }
 
     #aurora-mid {
         height: 450px;
-        top: 8545px;
+        bottom: 8245px;
         margin-top: 120px;
         transition: all 1.1s ease-in-out;
     }
 
     #aurora-fore {
         height: 450px;
-        top: 8545px;
+        bottom: 8245px;
         margin-top: 150px;
         transition: all 1.2s ease-in-out;
     }

@@ -9,6 +9,7 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         let isVisibled = false
@@ -16,10 +17,10 @@ export default defineComponent({
             if (isVisibled) {
                 return true
             } else {
-                if (props.scrollTop >= 2600) {
+                if (props.flyPx >= 2600) {
                     isVisibled = true
                 }
-                return props.scrollTop >= 2600
+                return props.flyPx >= 2600
             }
         })
 

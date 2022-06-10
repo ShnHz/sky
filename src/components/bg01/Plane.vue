@@ -9,10 +9,11 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         const visible = computed(() => {
-            return props.scrollTop >= 960
+            return props.flyPx >= 960
         })
 
         return {
@@ -29,7 +30,7 @@ export default defineComponent({
     width: 103px;
     height: 86px;
     position: absolute;
-    top: 1860px;
+    bottom: 1400px;
     margin-left: -103px;
 
     >div {

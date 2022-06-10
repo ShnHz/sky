@@ -9,12 +9,13 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         const theStyle = computed(() => {
-            let opacity = props.scrollTop >= 4128 ? '1' : props.scrollTop <= 3628 ? '0' : (500 - 4128 + props.scrollTop) / 500
-            let scale = props.scrollTop >= 4128 ? '1.2' : props.scrollTop <= 3628 ? '0.5' : 0.5 + (500 - 4128 + props.scrollTop) * 0.0014
-            let rotate = props.scrollTop >= 4128 ? '360' : props.scrollTop <= 3628 ? '180' : 180 + (500 - 4128 + props.scrollTop) * 0.36
+            let opacity = props.flyPx >= 4128 ? '1' : props.flyPx <= 3628 ? '0' : (500 - 4128 + props.flyPx) / 500
+            let scale = props.flyPx >= 4128 ? '1.2' : props.flyPx <= 3628 ? '0.5' : 0.5 + (500 - 4128 + props.flyPx) * 0.0014
+            let rotate = props.flyPx >= 4128 ? '360' : props.flyPx <= 3628 ? '180' : 180 + (500 - 4128 + props.flyPx) * 0.36
 
             return `opacity:${opacity};transform:scale(${scale}) rotate(${rotate}deg)`
         })
@@ -33,7 +34,7 @@ export default defineComponent({
     width: 79px;
     height: 69px;
     position: absolute;
-    top: 4550px;
+    bottom: 4550px;
     left: 50%;
     margin-left: -200px;
 

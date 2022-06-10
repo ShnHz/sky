@@ -9,15 +9,16 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         const theStyle = computed(() => {
-            let opacity = props.scrollTop >= 5448 ? '1' : props.scrollTop <= 4948 ? '0' : (500 - 5448 + props.scrollTop) / 500
-            let scale = props.scrollTop >= 5448 ? '0.8' : props.scrollTop <= 4948 ? '0.1' : 0.1 + (500 - 5448 + props.scrollTop) * 0.0014
-            let rotate = props.scrollTop >= 5448 ? '360' : props.scrollTop <= 4948 ? '420' : 420 - (500 - 5448 + props.scrollTop) * 0.12
-            let top = props.scrollTop >= 5748 ? '5748' : props.scrollTop <= 5248 ? '5998' : 5998 - (500 - 5748 + props.scrollTop) / 2
+            let opacity = props.flyPx >= 5448 ? '1' : props.flyPx <= 4948 ? '0' : (500 - 5448 + props.flyPx) / 500
+            let scale = props.flyPx >= 5448 ? '0.8' : props.flyPx <= 4948 ? '0.1' : 0.1 + (500 - 5448 + props.flyPx) * 0.0014
+            let rotate = props.flyPx >= 5448 ? '360' : props.flyPx <= 4948 ? '420' : 420 - (500 - 5448 + props.flyPx) * 0.12
+            let bottom = props.flyPx >= 5748 ? '5748' : props.flyPx <= 5248 ? '5498' : 5498 + (500 - 5748 + props.flyPx) / 2
 
-            return `opacity:${opacity};transform:scale(${scale}) rotate(${rotate}deg);top:${top}px`
+            return `opacity:${opacity};transform:scale(${scale}) rotate(${rotate}deg);bottom:${bottom}px`
         })
 
         return {
@@ -34,10 +35,10 @@ export default defineComponent({
     width: 72px;
     height: 104px;
     position: absolute;
-    top: 5748px;
+    bottom: 5748px;
     left: 50%;
     margin-left: -220px;
-    transform-origin:center center;
+    transform-origin: center center;
 
     >div {
         width: 72px;

@@ -11,10 +11,11 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         const visible = computed(() => {
-            return props.scrollTop >= 560
+            return props.flyPx >= 560
         })
 
         return {
@@ -43,39 +44,39 @@ export default defineComponent({
             opacity: 1;
 
             &#clouds-back {
-                margin-top: -140px;
+                margin-bottom: -140px;
                 transform: matrix(1.5, 0, 0, 1.5, 0, 0);
             }
 
             &#clouds-mid {
-                margin-top: -150px;
+                margin-bottom: -150px;
             }
 
             &#clouds-fore {
-                margin-top: -160px;
+                margin-bottom: -160px;
             }
         }
     }
 
     #clouds-back {
         height: 180px;
-        top: 1160px;
-        margin-top: 100px;
+        bottom: 1160px;
+        margin-bottom: -380px;
         transform: matrix(1, 0, 0, 1, 0, 0);
         transition: all 1s ease-in-out;
     }
 
     #clouds-mid {
         height: 200px;
-        top: 1160px;
-        margin-top: 120px;
+        bottom: 1160px;
+        margin-bottom: -390px;
         transition: all 1.1s ease-in-out;
     }
 
     #clouds-fore {
         height: 180px;
-        top: 1160px;
-        margin-top: 140px;
+        bottom: 1160px;
+        margin-bottom: -440px;
         transition: all 1.2s ease-in-out;
     }
 }

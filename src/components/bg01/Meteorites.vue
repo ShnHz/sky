@@ -11,22 +11,23 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         const theStyle = computed(() => {
-            let opacity = props.scrollTop >= 6930 ? '1' : props.scrollTop <= 6330 ? '0.4' : (600 - 6330 + props.scrollTop) / 600 / 0.6 - 1
-            let right = props.scrollTop >= 6930 ? 'calc(100vw + 260px)' : props.scrollTop <= 6330 ? '-260px' : `calc(${(600 - 6930 + props.scrollTop) * 0.16666}vw)`
-            let marginTop = props.scrollTop >= 6930 ? '0' : props.scrollTop <= 6330 ? '900' : (600 - 6930 + props.scrollTop) * 1.5
+            let opacity = props.flyPx >= 6930 ? '1' : props.flyPx <= 6330 ? '0.4' : (600 - 6330 + props.flyPx) / 600 / 0.6 - 1
+            let right = props.flyPx >= 6930 ? 'calc(100vw + 260px)' : props.flyPx <= 6330 ? '-260px' : `calc(${(600 - 6930 + props.flyPx) * 0.16666}vw)`
+            let bottom = props.flyPx >= 6930 ? '6645' : props.flyPx <= 6330 ? '7245' : 7245 - (600 - 6930 + props.flyPx) * 1
 
-            return `opacity:${opacity};right:${right};margin-top:${marginTop}px`
+            return `opacity:${opacity};right:${right};bottom:${bottom}px`
         })
         const theStyle2 = computed(() => {
-            let marginTop = props.scrollTop >= 6930 ? '40' : props.scrollTop <= 6330 ? '10' : 10 + (600 - 6930 + props.scrollTop) / 20
+            let marginTop = props.flyPx >= 6930 ? '40' : props.flyPx <= 6330 ? '10' : 10 + (600 - 6930 + props.flyPx) / 20
 
             return `margin-top:${marginTop}px`
         })
         const theStyle3 = computed(() => {
-            let marginTop = props.scrollTop >= 6930 ? '60' : props.scrollTop <= 6330 ? '20' : 20 + (600 - 6930 + props.scrollTop) / 15
+            let marginTop = props.flyPx >= 6930 ? '60' : props.flyPx <= 6330 ? '20' : 20 + (600 - 6930 + props.flyPx) / 15
 
             return `margin-top:${marginTop}px`
         })
@@ -44,7 +45,7 @@ export default defineComponent({
     z-index: 9999;
     right: -260px;
     position: absolute;
-    top: 6545px;
+    bottom: 7245px;
 
     .meteor {
         height: 4px;

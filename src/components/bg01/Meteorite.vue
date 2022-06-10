@@ -17,10 +17,11 @@ import { defineComponent, computed } from 'vue'
 export default defineComponent({
     props: {
         scrollTop: Number,
+        flyPx: Number
     },
     setup(props, context) {
         const visible = computed(() => {
-            return props.scrollTop >= 2400 && props.scrollTop <= 3300
+            return props.flyPx >= 2000 && props.flyPx <= 3300
         })
 
         return {
