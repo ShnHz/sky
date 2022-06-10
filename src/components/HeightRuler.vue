@@ -180,14 +180,34 @@ export default defineComponent({
             'mousewheel',
             (e) => {
                 clearInterval(autoFlyTimer)
+                timed = 0
             },
             false
         )
         let autoFlyTimer = null
+        let speed = 20
+        let timed = 0
         const autoFlyStart = (() => {
             autoFlyTimer = setInterval(() => {
+                if (timed == 5200) {
+                    clearInterval(autoFlyTimer)
+                    speed = 8
+                    autoFlyTimer = setInterval(() => {
+                        if (document.documentElement.scrollTop <= 0) {
+                            clearInterval(autoFlyTimer)
+                            timed = 0
+                        }
+                        document.documentElement.scrollTop = document.documentElement.scrollTop - 1
+                        timed += speed
+                    }, speed)
+                }
+                if (document.documentElement.scrollTop <= 0) {
+                    clearInterval(autoFlyTimer)
+                    timed = 0
+                }
                 document.documentElement.scrollTop = document.documentElement.scrollTop - 1
-            }, 5)
+                timed += speed
+            }, speed)
         })
 
         return {
@@ -287,8 +307,9 @@ export default defineComponent({
 
 ::v-deep .rocker-launch {
     z-index: 9999;
+    height: 30px;
     position: fixed;
-    bottom: 100px;
+    bottom: 40px;
     left: 50%;
     margin-left: -80px;
 }

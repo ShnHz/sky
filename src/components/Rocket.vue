@@ -25,7 +25,7 @@ export default defineComponent({
 
     const isIgnition = computed(() => {
       //点火状态
-      return bottom.value >= 10 && bottom.value <= ignitionDistance.value
+      return bottom.value > 0 && bottom.value <= ignitionDistance.value
     })
     const isFlying = computed(() => {
       //飞行状态
@@ -36,7 +36,7 @@ export default defineComponent({
       if (isIgnition.value) return 318 - bottom.value
       if (bottom.value < 10) return 318
 
-      return 80 + (bottom.value / document.getElementById('app').clientHeight) * (document.body.clientHeight - 300)
+      return 70 + (bottom.value / document.getElementById('app').clientHeight) * (document.body.clientHeight - 300)
     })
 
     return {

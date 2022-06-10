@@ -48,8 +48,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .rocker-launch {
-  height: 100px;
-
   * {
     webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
