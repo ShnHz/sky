@@ -5,17 +5,17 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { scrollStore } from '../../store/scroll'
+import { storeToRefs } from 'pinia'
 
 export default defineComponent({
-    props: {
-        scrollTop: Number,
-        flyPx: Number
-    },
     setup(props, context) {
+        const { flyPx } = storeToRefs(scrollStore())
+
         const theStyle = computed(() => {
-            let opacity = props.flyPx >= 4128 ? '1' : props.flyPx <= 3628 ? '0' : (500 - 4128 + props.flyPx) / 500
-            let scale = props.flyPx >= 4128 ? '1.2' : props.flyPx <= 3628 ? '0.5' : 0.5 + (500 - 4128 + props.flyPx) * 0.0014
-            let rotate = props.flyPx >= 4128 ? '360' : props.flyPx <= 3628 ? '180' : 180 + (500 - 4128 + props.flyPx) * 0.36
+            let opacity = flyPx.value >= 4128 ? '1' : flyPx.value <= 3628 ? '0' : (500 - 4128 + flyPx.value) / 500
+            let scale = flyPx.value >= 4128 ? '1.2' : flyPx.value <= 3628 ? '0.5' : 0.5 + (500 - 4128 + flyPx.value) * 0.0014
+            let rotate = flyPx.value >= 4128 ? '360' : flyPx.value <= 3628 ? '180' : 180 + (500 - 4128 + flyPx.value) * 0.36
 
             return `opacity:${opacity};transform:scale(${scale}) rotate(${rotate}deg)`
         })

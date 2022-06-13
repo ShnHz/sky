@@ -13,15 +13,15 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { scrollStore } from '../../store/scroll'
+import { storeToRefs } from 'pinia'
 
 export default defineComponent({
-    props: {
-        scrollTop: Number,
-        flyPx: Number
-    },
     setup(props, context) {
+        const { flyPx } = storeToRefs(scrollStore())
+
         const visible = computed(() => {
-            return props.flyPx >= 2000 && props.flyPx <= 3300
+            return flyPx.value >= 2000 && flyPx.value <= 3300
         })
 
         return {

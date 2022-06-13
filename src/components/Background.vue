@@ -16,20 +16,20 @@
       <div id="stars-container" class="stars-container" :style="{ 'background': imgStars }"></div>
     </div>
 
-    <Cloud :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Plane :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Planex1 :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Meteorite :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Legao :scrollTop="scrollTop" :flyPx="flyPx" />
-    <MeteorologicalBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Parachuting :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Biological :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Aurora :scrollTop="scrollTop" :flyPx="flyPx" />
-    <NoOneBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Meteorites :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Cloud />
+    <Plane />
+    <Planex1 />
+    <Meteorite />
+    <Legao />
+    <MeteorologicalBalloon />
+    <Parachuting />
+    <Biological />
+    <Aurora />
+    <NoOneBalloon />
+    <Meteorites />
 
-    <Monkey :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Meteorites2 :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Monkey />
+    <Meteorites2 />
   </div>
 </template>
 
@@ -69,10 +69,6 @@ export default defineComponent({
     Meteorites,
     Monkey,
     Meteorites2
-  },
-  props: {
-    scrollTop: Number,
-    flyPx: Number
   },
   setup(props, context) {
     onMounted(() => {

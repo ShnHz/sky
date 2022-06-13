@@ -2,15 +2,15 @@
  * @Author: sanghangning 
  * @Date: 2022-06-06 11:43:42 
  * @Last Modified by: sanghangning
- * @Last Modified time: 2022-06-10 16:31:27
+ * @Last Modified time: 2022-06-13 16:18:00
  */
 
 <template >
   <div class="index-wrap">
     <Loading />
-    <Background :scrollTop="scrollTop" :flyPx="flyPx" />
-    <Rocket :scrollTop="scrollTop" :flyPx="flyPx" />
-    <HeightRuler :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Background />
+    <Rocket />
+    <HeightRuler />
   </div>
 </template>
 <script lang="ts">
@@ -30,24 +30,7 @@ export default defineComponent({
       }, 1000);
     })
 
-    let scrollTop = ref(0)
-
-    const flyPx = computed(() => {
-      return document.documentElement.scrollHeight - document.documentElement.clientHeight - scrollTop.value
-    })
-
-    window.addEventListener(
-      'scroll',
-      (e) => {
-        scrollTop.value = document.documentElement.scrollTop
-      },
-      false
-    )
-
-    return {
-      scrollTop,
-      flyPx
-    }
+    return {}
   },
 })
 </script>

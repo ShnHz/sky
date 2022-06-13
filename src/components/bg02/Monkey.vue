@@ -5,19 +5,18 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { scrollStore } from '../../store/scroll'
+import { storeToRefs } from 'pinia'
 
 export default defineComponent({
-    props: {
-        scrollTop: Number,
-        flyPx: Number
-    },
     setup(props, context) {
+        const { flyPx } = storeToRefs(scrollStore())
+
         const theStyle = computed(() => {
-            console.log(500 - 10431 + props.flyPx)
-            let marginTop = props.flyPx >= 10431 ? '0' : (10431 - props.flyPx) * 2
-            let opacity = props.flyPx >= 10431 ? '1' : props.flyPx <= 9931 ? '0' : (500 - 10431 + props.flyPx) / 500
-            let scale = props.flyPx >= 10431 ? '1' : props.flyPx <= 9931 ? '0.5' : 0.5 + (500 - 10431 + props.flyPx) * 0.001
-            let rotate = props.flyPx >= 10431 ? '0' : props.flyPx <= 9931 ? 270 : 270 - (500 - 10431 + props.flyPx) * 0.54
+            let marginTop = flyPx.value >= 10431 ? '0' : (10431 - flyPx.value) * 2
+            let opacity = flyPx.value >= 10431 ? '1' : flyPx.value <= 9931 ? '0' : (500 - 10431 + flyPx.value) / 500
+            let scale = flyPx.value >= 10431 ? '1' : flyPx.value <= 9931 ? '0.5' : 0.5 + (500 - 10431 + flyPx.value) * 0.001
+            let rotate = flyPx.value >= 10431 ? '0' : flyPx.value <= 9931 ? 270 : 270 - (500 - 10431 + flyPx.value) * 0.54
 
             return `margin-bottom:${marginTop}px;opacity:${opacity};transform:scale(${scale}) rotate(${rotate}deg)`
         })

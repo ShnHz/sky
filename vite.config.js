@@ -36,12 +36,12 @@ export default ({
         "@static": path.resolve(__dirname, "public/static"),
         "@img": path.resolve(__dirname, "src/assets/img"),
         "@css": path.resolve(__dirname, "src/assets/css"),
+        "@store": path.resolve(__dirname, "src/store"),
       },
     },
     css: {
       preprocessorOptions: {
-        scss: {
-        }
+        scss: {}
       }
     }
   })

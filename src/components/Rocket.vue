@@ -20,14 +20,17 @@
 <script lang="ts">
 import { ref, defineComponent, onMounted, computed } from 'vue'
 
+import { storeToRefs } from 'pinia'
+import {
+  scrollStore
+} from '../store/scroll'
+
 export default defineComponent({
-  props: {
-    scrollTop: Number,
-    flyPx: Number
-  },
   setup(props, context) {
+    const { flyPx, scrollTop } = storeToRefs(scrollStore())
+
     const bottom = computed(() => {
-      return document.documentElement.scrollHeight - props.scrollTop - 937
+      return document.documentElement.scrollHeight - scrollTop.value - 937
     })
 
     // 点火距离
@@ -42,11 +45,12 @@ export default defineComponent({
       return bottom.value > ignitionDistance.value
     })
     const rocketBottom = computed(() => {
+      const appDom = document.getElementById('app') as HTMLElement
       //火箭位置
       if (isIgnition.value) return 318 - bottom.value
       if (bottom.value < 10) return 318
 
-      return 70 + (bottom.value / document.getElementById('app').clientHeight) * (document.body.clientHeight - 300)
+      return 70 + (bottom.value / appDom.clientHeight) * (document.body.clientHeight - 300)
     })
 
     return {
@@ -56,7 +60,9 @@ export default defineComponent({
       rocketBottom,
 
       imgRocket: 'url(@/../static/img/rocket/rocket.png)',
-      imgFlame: 'url(@/../static/img/rocket/flame-sprite.png) no-repeat center center'
+      imgFlame: 'url(@/../static/img/rocket/flame-sprite.png) no-repeat center center',
+
+      flyPx
     }
   },
 })

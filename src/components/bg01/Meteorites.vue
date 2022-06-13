@@ -8,26 +8,27 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 
+import { scrollStore } from '../../store/scroll'
+import { storeToRefs } from 'pinia'
+
 export default defineComponent({
-    props: {
-        scrollTop: Number,
-        flyPx: Number
-    },
     setup(props, context) {
+        const { flyPx } = storeToRefs(scrollStore())
+
         const theStyle = computed(() => {
-            let opacity = props.flyPx >= 6930 ? '1' : props.flyPx <= 6330 ? '0.4' : (600 - 6330 + props.flyPx) / 600 / 0.6 - 1
-            let right = props.flyPx >= 6930 ? 'calc(100vw + 260px)' : props.flyPx <= 6330 ? '-260px' : `calc(${(600 - 6930 + props.flyPx) * 0.16666}vw)`
-            let bottom = props.flyPx >= 6930 ? '6645' : props.flyPx <= 6330 ? '7245' : 7245 - (600 - 6930 + props.flyPx) * 1
+            let opacity = flyPx.value >= 6930 ? '1' : flyPx.value <= 6330 ? '0.4' : (600 - 6330 + flyPx.value) / 600 / 0.6 - 1
+            let right = flyPx.value >= 6930 ? 'calc(100vw + 260px)' : flyPx.value <= 6330 ? '-260px' : `calc(${(600 - 6930 + flyPx.value) * 0.16666}vw)`
+            let bottom = flyPx.value >= 6930 ? '6645' : flyPx.value <= 6330 ? '7245' : 7245 - (600 - 6930 + flyPx.value) * 1
 
             return `opacity:${opacity};right:${right};bottom:${bottom}px`
         })
         const theStyle2 = computed(() => {
-            let marginTop = props.flyPx >= 6930 ? '40' : props.flyPx <= 6330 ? '10' : 10 + (600 - 6930 + props.flyPx) / 20
+            let marginTop = flyPx.value >= 6930 ? '40' : flyPx.value <= 6330 ? '10' : 10 + (600 - 6930 + flyPx.value) / 20
 
             return `margin-top:${marginTop}px`
         })
         const theStyle3 = computed(() => {
-            let marginTop = props.flyPx >= 6930 ? '60' : props.flyPx <= 6330 ? '20' : 20 + (600 - 6930 + props.flyPx) / 15
+            let marginTop = flyPx.value >= 6930 ? '60' : flyPx.value <= 6330 ? '20' : 20 + (600 - 6930 + flyPx.value) / 15
 
             return `margin-top:${marginTop}px`
         })

@@ -41,17 +41,20 @@
 import { ref, defineComponent, onMounted, computed } from 'vue'
 import WOW from 'wow.js'
 
+import { storeToRefs } from 'pinia'
+import {
+    scrollStore
+} from '../store/scroll'
+
 import RocketLaunch from '@/components/other/RocketLaunch.vue'
 
 export default defineComponent({
     components: {
         RocketLaunch
     },
-    props: {
-        scrollTop: Number,
-        flyPx: Number
-    },
     setup(props, context) {
+        const { flyPx } = storeToRefs(scrollStore())
+
         onMounted(() => {
             new WOW({ animateClass: 'animate__animated' }).init()
         })
@@ -186,17 +189,18 @@ export default defineComponent({
             },
         ]
         const flyHeight = computed(() => {
-            let rocketBottom = (document.getElementById('rocket') ? parseInt(document.getElementById('rocket').style.bottom) : 0) + 130
+            let rocketDom = document.getElementById('rocket')
+            let rocketBottom = (rocketDom ? parseInt(rocketDom.style.bottom) : 0) + 130
             let heightList = [...atmosphereList, ...list].sort((a, b) => a.scrollTop - b.scrollTop)
-            
+
             //飞行高度
             for (let i = 0; i < heightList.length; i++) {
-                if (props.flyPx <= heightList[i].scrollTop - rocketBottom) {
-                    return Math.round(props.flyPx * (parseInt(heightList[i].height) / (heightList[i].scrollTop - rocketBottom)) / 1000)
+                if (flyPx.value <= heightList[i].scrollTop - rocketBottom) {
+                    return Math.round(flyPx.value * (parseInt(heightList[i].height) / (heightList[i].scrollTop - rocketBottom)) / 1000)
                 }
             }
 
-            return Math.round(props.flyPx / 1000)
+            return Math.round(flyPx.value / 1000)
         })
 
 
@@ -209,7 +213,7 @@ export default defineComponent({
             },
             false
         )
-        let autoFlyTimer = null
+        let autoFlyTimer
         let speed = 20
         let timed = 0
         const reSpeed = ((speed) => {
@@ -244,12 +248,13 @@ export default defineComponent({
         })
 
         return {
+            flyPx,
             flyHeight,
 
             atmosphereList,
             list,
 
-            autoFlyStart
+            autoFlyStart,
         }
     },
 })
@@ -338,7 +343,7 @@ export default defineComponent({
     border-radius: 12px;
 }
 
-::v-deep .rocker-launch {
+::v-deep(.rocker-launch) {
     z-index: 9999;
     height: 30px;
     position: fixed;
