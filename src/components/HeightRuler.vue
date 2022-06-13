@@ -158,12 +158,37 @@ export default defineComponent({
                 height: '80000米',
                 scrollTop: 8545,
                 name: '极光的最低高度',
+            }, {
+                height: '100000米',
+                scrollTop: 10545,
+                name: '卡门线',
+                annotation: '国际航空联合会定义的大气层和太空的界线。卡门线外为太空'
+            }, {
+                height: '120000米',
+                scrollTop: 10745,
+                name: '伊朗太空猴',
+                annotation: '2013年伊朗将一只猴子发射到太空并成功返回'
+            }, {
+                height: '190000米',
+                scrollTop: 11445,
+                name: '流星雨',
+                annotation: '彗星尘埃粒落入大气时摩擦生热发光'
+            }, {
+                height: '330000米',
+                scrollTop: 12845,
+                name: '第一位宇航员',
+                annotation: '1961年尤里·加加林成为第一位进入太空的宇航员'
+            }, {
+                height: '420000米',
+                scrollTop: 13745,
+                name: '国际空间站',
+                annotation: '国际空间站是一个在近地轨道上运行的的科研设施，也是人类历史上第九个载人的空间站'
             },
         ]
         const flyHeight = computed(() => {
             let rocketBottom = (document.getElementById('rocket') ? parseInt(document.getElementById('rocket').style.bottom) : 0) + 130
             let heightList = [...atmosphereList, ...list].sort((a, b) => a.scrollTop - b.scrollTop)
-
+            
             //飞行高度
             for (let i = 0; i < heightList.length; i++) {
                 if (props.flyPx <= heightList[i].scrollTop - rocketBottom) {
@@ -198,7 +223,7 @@ export default defineComponent({
                 document.documentElement.scrollTop = document.documentElement.scrollTop - 1
                 timed += speed
 
-                if (speed >= 5) {
+                if (speed >= 8) {
                     reSpeed(speed - 0.1)
                 }
             }, speed)

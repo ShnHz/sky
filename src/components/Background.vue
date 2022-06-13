@@ -14,19 +14,22 @@
       </section>
       <div id="earth-container" class="earth-container" :style="{ 'background': imgEarth }"></div>
       <div id="stars-container" class="stars-container" :style="{ 'background': imgStars }"></div>
-
-      <Cloud :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Plane :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Planex1 :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Meteorite :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Legao :scrollTop="scrollTop" :flyPx="flyPx" />
-      <MeteorologicalBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Parachuting :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Biological :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Aurora :scrollTop="scrollTop" :flyPx="flyPx" />
-      <NoOneBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
-      <Meteorites :scrollTop="scrollTop" :flyPx="flyPx" />
     </div>
+
+    <Cloud :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Plane :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Planex1 :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Meteorite :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Legao :scrollTop="scrollTop" :flyPx="flyPx" />
+    <MeteorologicalBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Parachuting :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Biological :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Aurora :scrollTop="scrollTop" :flyPx="flyPx" />
+    <NoOneBalloon :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Meteorites :scrollTop="scrollTop" :flyPx="flyPx" />
+
+    <Monkey :scrollTop="scrollTop" :flyPx="flyPx" />
+    <Meteorites2 :scrollTop="scrollTop" :flyPx="flyPx" />
   </div>
 </template>
 
@@ -34,6 +37,7 @@
 import { ref, defineComponent, onMounted, computed } from 'vue'
 import WOW from 'wow.js'
 
+// bg01
 import Cloud from '@/components/bg01/Cloud.vue'
 import Plane from '@/components/bg01/Plane.vue'
 import Planex1 from '@/components/bg01/Planex1.vue'
@@ -45,6 +49,10 @@ import Biological from '@/components/bg01/Biological.vue'
 import Aurora from '@/components/bg01/Aurora.vue'
 import NoOneBalloon from '@/components/bg01/NoOneBalloon.vue'
 import Meteorites from '@/components/bg01/Meteorites.vue'
+
+// bg02
+import Monkey from '@/components/bg02/Monkey.vue'
+import Meteorites2 from '@/components/bg02/Meteorites.vue'
 
 export default defineComponent({
   components: {
@@ -58,7 +66,9 @@ export default defineComponent({
     Biological,
     Aurora,
     NoOneBalloon,
-    Meteorites
+    Meteorites,
+    Monkey,
+    Meteorites2
   },
   props: {
     scrollTop: Number,

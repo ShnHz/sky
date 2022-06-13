@@ -1,5 +1,5 @@
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="rocket" viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="rocketsvg" viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M12,0 C18.6666667,8.70175439 19.7777778,19.0350877 15.3333333,31 L8.66666667,31 C4.22222222,19.0350877 5.33333333,8.70175439 12,0 Z"
           fill="var(--rocket)"
