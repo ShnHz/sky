@@ -30,7 +30,7 @@ export default defineComponent({
     const { flyPx, scrollTop } = storeToRefs(scrollStore())
 
     const bottom = computed(() => {
-      return document.documentElement.scrollHeight - scrollTop.value - 937
+      return document.documentElement.scrollHeight - scrollTop.value - document.documentElement.clientHeight
     })
 
     // 点火距离
