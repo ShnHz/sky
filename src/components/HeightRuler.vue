@@ -214,8 +214,8 @@ export default defineComponent({
             false
         )
         let autoFlyTimer
-        let speed = 20
-        let timed = 0
+        let speed: number = 20
+        let timed: number = 0
         const reSpeed = ((speed) => {
             clearInterval(autoFlyTimer)
             autoFlyTimer = setInterval(() => {

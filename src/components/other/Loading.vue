@@ -48,8 +48,8 @@ export default defineComponent({
 
         onBeforeMount(() => {
             setTimeout(() => {
-                let count = 0;
-                let imgs = [
+                let count: number = 0;
+                let imgs: string[] = [
                     '@/../static/img/bg/b1-tile.jpg',
                     '@/../static/img/bg/b1.jpg',
                     '@/../static/img/bg/b2-tile.jpg',
